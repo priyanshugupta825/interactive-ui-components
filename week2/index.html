@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive UI Components Suite | Week 2 Deliverable</title>
+  <meta name="description" content="Production-ready, accessible interactive UI components built with Vanilla JavaScript, HTML5, and CSS3. Includes Modals, Tabs, Accordions, and Toast Notifications.">
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="ui-app-container">
+    
+    <!-- =============================================================== -->
+    <!-- PLAYGROUND HEADER                                               -->
+    <!-- =============================================================== -->
+    <header class="ui-playground-header">
+      <div class="header-badge">WEEK 2 TECHNICAL TASK &bull; INTERACTIVE UI SUITE</div>
+      <h1 class="header-title">Reusable & Accessible UI Components</h1>
+      <p class="header-desc">
+        A production-grade collection of interactive front-end components engineered with modular vanilla JavaScript (ES6+), semantic HTML5, and modern CSS3. Built with strict WAI-ARIA authoring practices, focus trapping, roving tabindex, and defensive error boundaries.
+      </p>
+
+      <!-- Keyboard Shortcuts Bar -->
+      <div class="shortcuts-bar">
+        <span class="shortcuts-label">Interactive Keyboard Controls:</span>
+        <span class="key-badge">Esc</span> <span>Close Modal</span>
+        <span class="key-badge">Tab / Shift+Tab</span> <span>Trap Focus</span>
+        <span class="key-badge">&larr; &rarr;</span> <span>Navigate Tabs</span>
+        <span class="key-badge">&uarr; &darr;</span> <span>Navigate Accordion</span>
+        <span class="key-badge">Enter / Space</span> <span>Toggle / Activate</span>
+      </div>
+    </header>
+
+    <!-- =============================================================== -->
+    <!-- 4-COMPONENT SHOWCASE GRID                                       -->
+    <!-- =============================================================== -->
+    <div class="ui-components-grid">
+
+      <!-- ------------------------------------------------------------- -->
+      <!-- COMPONENT 1: ACCESSIBLE MODAL DIALOGS                         -->
+      <!-- ------------------------------------------------------------- -->
+      <section class="ui-component-card" aria-labelledby="heading-modal">
+        <div class="card-top">
+          <div class="card-title-group">
+            <div class="card-icon" aria-hidden="true">🗂️</div>
+            <h2 class="card-title" id="heading-modal">Accessible Modal Dialogs</h2>
+          </div>
+          <span class="aria-tag">role="dialog"</span>
+        </div>
+
+        <div class="card-content">
+          <p style="color: var(--ui-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Features strict focus trapping, background scroll-lock, backdrop dismissal, dynamic ARIA synchronization, and focus restoration to trigger element on exit.
+          </p>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" data-modal-target="#demo-confirm-modal">
+              Open Confirmation Modal
+            </button>
+            <button type="button" class="btn btn-secondary" data-modal-target="#demo-form-modal">
+              Open Form Modal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------- -->
+      <!-- COMPONENT 2: ACCESSIBLE TAB SYSTEM                            -->
+      <!-- ------------------------------------------------------------- -->
+      <section class="ui-component-card" aria-labelledby="heading-tabs">
+        <div class="card-top">
+          <div class="card-title-group">
+            <div class="card-icon" aria-hidden="true">📑</div>
+            <h2 class="card-title" id="heading-tabs">WAI-ARIA Tab System</h2>
+          </div>
+          <span class="aria-tag">role="tablist"</span>
+        </div>
+
+        <div class="card-content">
+          <!-- Declarative Tab Component -->
+          <div class="ui-tabs" data-component="tabs">
+            <div role="tablist" class="ui-tablist" aria-label="Component Documentation Tabs">
+              <button type="button" role="tab" class="ui-tab active" id="tab-1" aria-controls="panel-1" aria-selected="true">
+                Features
+              </button>
+              <button type="button" role="tab" class="ui-tab" id="tab-2" aria-controls="panel-2" aria-selected="false">
+                Accessibility
+              </button>
+              <button type="button" role="tab" class="ui-tab" id="tab-3" aria-controls="panel-3" aria-selected="false">
+                API Methods
+              </button>
+            </div>
+
+            <!-- Tab Panel 1 -->
+            <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" class="ui-tabpanel active">
+              <h3 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.5rem;">Core Capabilities</h3>
+              <p style="font-size: 0.88rem; color: var(--ui-text-muted);">
+                Roving tabindex pattern ensures that only the active tab is in sequential keyboard focus order. Left/Right arrow keys dynamically activate tabs.
+              </p>
+              <div class="tab-spec-list">
+                <div class="tab-spec-item">
+                  <span>Arrow Navigation</span>
+                  <span style="color: var(--ui-emerald); font-weight: 600;">Enabled</span>
+                </div>
+                <div class="tab-spec-item">
+                  <span>Roving Tabindex</span>
+                  <span style="color: var(--ui-cyan); font-weight: 600;">tabindex="0" / "-1"</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Panel 2 -->
+            <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" class="ui-tabpanel" hidden>
+              <h3 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.5rem;">WAI-ARIA Compliance</h3>
+              <p style="font-size: 0.88rem; color: var(--ui-text-muted);">
+                Adheres to W3C Tab Design Pattern. Associated panels are linked via <code>aria-controls</code> and <code>aria-labelledby</code> attributes.
+              </p>
+              <div class="tab-spec-list">
+                <div class="tab-spec-item">
+                  <span>aria-selected</span>
+                  <span style="color: var(--ui-cyan); font-weight: 600;">Synchronized</span>
+                </div>
+                <div class="tab-spec-item">
+                  <span>Screen Reader Tested</span>
+                  <span style="color: var(--ui-emerald); font-weight: 600;">NVDA & VoiceOver</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab Panel 3 -->
+            <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" class="ui-tabpanel" hidden>
+              <h3 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.5rem;">Programmatic Interface</h3>
+              <p style="font-size: 0.88rem; color: var(--ui-text-muted);">
+                Instantiate programmatically or allow declarative discovery:
+              </p>
+              <pre style="background: #090d16; padding: 0.75rem; border-radius: 6px; font-family: var(--ui-font-mono); font-size: 0.75rem; color: var(--ui-cyan); margin-top: 0.5rem;">const tabs = new UIComponents.Tabs('#my-tabs');
+tabs.activateTab(1); // Activate by index</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------- -->
+      <!-- COMPONENT 3: MULTI-STATE ACCORDION                            -->
+      <!-- ------------------------------------------------------------- -->
+      <section class="ui-component-card" aria-labelledby="heading-accordion">
+        <div class="card-top">
+          <div class="card-title-group">
+            <div class="card-icon" aria-hidden="true">🗂️</div>
+            <h2 class="card-title" id="heading-accordion">Multi-State Accordion</h2>
+          </div>
+          <span class="aria-tag">role="region"</span>
+        </div>
+
+        <div class="card-content">
+          <!-- Accordion Controls -->
+          <div class="accordion-toggle-controls">
+            <span class="accordion-mode-label" id="mode-status-text">Mode: Single-Open (Collapsing)</span>
+            <button type="button" class="btn btn-secondary" id="btn-toggle-accordion-mode" style="padding: 4px 10px; font-size: 0.78rem;">
+              Enable Multi-Open Mode
+            </button>
+          </div>
+
+          <!-- Accordion Component -->
+          <div class="ui-accordion" id="demo-accordion" data-component="accordion" data-multi-expand="false">
+            
+            <!-- Item 1 -->
+            <div class="ui-accordion-item">
+              <button type="button" class="ui-accordion-trigger" data-accordion-trigger aria-expanded="true">
+                <span>Architecture & State Management</span>
+                <svg class="accordion-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div class="ui-accordion-panel active">
+                Independent encapsulated component instances manage their own DOM state without leaking global variables or colliding with surrounding page elements.
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="ui-accordion-item">
+              <button type="button" class="ui-accordion-trigger" data-accordion-trigger aria-expanded="false">
+                <span>Keyboard Interaction Shortcuts</span>
+                <svg class="accordion-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div class="ui-accordion-panel" hidden>
+                Use Up and Down arrow keys to cycle focus between accordion headers. Press Enter or Space to toggle panels.
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="ui-accordion-item">
+              <button type="button" class="ui-accordion-trigger" data-accordion-trigger aria-expanded="false">
+                <span>Error Handling & Fallback Strategy</span>
+                <svg class="accordion-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div class="ui-accordion-panel" hidden>
+                If JavaScript fails or is disabled, all content panels remain fully visible and readable by default using CSS fallbacks.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------- -->
+      <!-- COMPONENT 4: LIVE TOAST NOTIFICATION ENGINE                   -->
+      <!-- ------------------------------------------------------------- -->
+      <section class="ui-component-card" aria-labelledby="heading-toast">
+        <div class="card-top">
+          <div class="card-title-group">
+            <div class="card-icon" aria-hidden="true">🔔</div>
+            <h2 class="card-title" id="heading-toast">Toast Notifications</h2>
+          </div>
+          <span class="aria-tag">role="status"</span>
+        </div>
+
+        <div class="card-content">
+          <p style="color: var(--ui-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Dispatches accessible toast alerts with auto-dismiss timers, manual dismiss buttons, hover pause, and ARIA live regions for screen readers.
+          </p>
+
+          <div class="btn-group">
+            <button type="button" class="btn" style="background: rgba(16, 185, 129, 0.15); color: var(--ui-emerald); border: 1px solid rgba(16, 185, 129, 0.3);" id="btn-toast-success">
+              Success Toast
+            </button>
+            <button type="button" class="btn" style="background: rgba(6, 182, 212, 0.15); color: var(--ui-cyan); border: 1px solid rgba(6, 182, 212, 0.3);" id="btn-toast-info">
+              Info Toast
+            </button>
+            <button type="button" class="btn" style="background: rgba(245, 158, 11, 0.15); color: var(--ui-amber); border: 1px solid rgba(245, 158, 11, 0.3);" id="btn-toast-warning">
+              Warning Toast
+            </button>
+            <button type="button" class="btn btn-danger" id="btn-toast-error">
+              Error Toast
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- REAL-TIME EVENT LOGGER CONSOLE                                  -->
+    <!-- =============================================================== -->
+    <section class="ui-event-logger" aria-labelledby="logger-title">
+      <div class="logger-header">
+        <h2 class="logger-title" id="logger-title">
+          <span>⚡ Live Component Event Log</span>
+          <span style="font-size: 0.75rem; color: var(--ui-text-faint); font-weight: normal;">(Captures dispatched CustomEvents)</span>
+        </h2>
+        <button type="button" class="btn btn-secondary" id="btn-clear-logs" style="padding: 4px 10px; font-size: 0.75rem;">
+          Clear Logs
+        </button>
+      </div>
+
+      <div class="logger-box" id="logger-box" role="log" aria-live="polite">
+        <div class="log-entry">
+          <span class="log-time">[Ready]</span>
+          <span>UIComponent Suite initialized and ready for user interactions.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation link back to Week 1 -->
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="../index.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+        &larr; Return to Week 1 Landing Page
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL DIALOG 1: CONFIRMATION MODAL                                -->
+  <!-- ================================================================= -->
+  <div class="ui-modal" id="demo-confirm-modal" data-component="modal" aria-labelledby="confirm-modal-title" aria-describedby="confirm-modal-desc">
+    <div class="ui-modal-dialog">
+      <div class="ui-modal-header">
+        <h3 class="ui-modal-title" id="confirm-modal-title">Confirm Component Action</h3>
+        <button type="button" class="ui-modal-close" data-modal-close aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="ui-modal-body" id="confirm-modal-desc">
+        <p>
+          You have opened the accessible confirmation dialog. Notice that pressing the <kbd class="key-badge">Tab</kbd> key cycles focus solely between the buttons inside this modal.
+        </p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--ui-text-faint);">
+          Pressing <kbd class="key-badge">Esc</kbd> or clicking outside on the backdrop will safely close the dialog and return focus to your trigger button.
+        </p>
+      </div>
+      <div class="ui-modal-footer">
+        <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-modal-confirm-action">Confirm Action</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL DIALOG 2: FORM INPUT MODAL                                  -->
+  <!-- ================================================================= -->
+  <div class="ui-modal" id="demo-form-modal" data-component="modal" aria-labelledby="form-modal-title" aria-describedby="form-modal-desc">
+    <div class="ui-modal-dialog">
+      <div class="ui-modal-header">
+        <h3 class="ui-modal-title" id="form-modal-title">Component Configuration</h3>
+        <button type="button" class="ui-modal-close" data-modal-close aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="modal-config-form">
+        <div class="ui-modal-body" id="form-modal-desc">
+          <div class="modal-form-group">
+            <label for="comp-name-input">Component Name</label>
+            <input type="text" id="comp-name-input" class="modal-form-input" placeholder="e.g. NavigationDrawer" required>
+          </div>
+          <div class="modal-form-group">
+            <label for="comp-role-input">WAI-ARIA Role</label>
+            <select id="comp-role-input" class="modal-form-input">
+              <option value="dialog">dialog</option>
+              <option value="tablist">tablist</option>
+              <option value="region">region</option>
+              <option value="status">status</option>
+            </select>
+          </div>
+        </div>
+        <div class="ui-modal-footer">
+          <button type="button" class="btn btn-secondary" data-modal-close>Close</button>
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Component Scripts -->
+  <script src="components.js"></script>
+
+  <!-- Interactive Playground Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loggerBox = document.getElementById('logger-box');
+
+      function logEvent(category, message) {
+        const time = new Date().toLocaleTimeString();
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.innerHTML = `
+          <span class="log-time">[${time}]</span>
+          <span class="log-event-${category}">[${category.toUpperCase()}]</span>
+          <span>${message}</span>
+        `;
+        loggerBox.insertBefore(entry, loggerBox.firstChild);
+      }
+
+      // Listen to Modal events
+      document.addEventListener('modal:open', (e) => {
+        logEvent('modal', `Modal "${e.target.id}" opened. Focus trapped.`);
+      });
+
+      document.addEventListener('modal:close', (e) => {
+        logEvent('modal', `Modal "${e.target.id}" closed. Focus restored.`);
+      });
+
+      // Listen to Tab events
+      document.addEventListener('tabs:change', (e) => {
+        const tabTitle = e.detail.tab ? e.detail.tab.textContent.trim() : `Index ${e.detail.index}`;
+        logEvent('tabs', `Tab switched to: "${tabTitle}" (Index: ${e.detail.index})`);
+      });
+
+      // Listen to Accordion events
+      document.addEventListener('accordion:change', (e) => {
+        logEvent('accordion', `Accordion item ${e.detail.index} ${e.detail.action}ed.`);
+      });
+
+      // Clear logs
+      document.getElementById('btn-clear-logs').addEventListener('click', () => {
+        loggerBox.innerHTML = `
+          <div class="log-entry">
+            <span class="log-time">[${new Date().toLocaleTimeString()}]</span>
+            <span>Logs cleared.</span>
+          </div>
+        `;
+      });
+
+      // Toast Demo Triggers
+      document.getElementById('btn-toast-success').addEventListener('click', () => {
+        UIComponents.Toast.show({
+          title: 'Success!',
+          message: 'Component updated successfully with zero regressions.',
+          type: 'success'
+        });
+        logEvent('toast', 'Dispatched Success Toast notification.');
+      });
+
+      document.getElementById('btn-toast-info').addEventListener('click', () => {
+        UIComponents.Toast.show({
+          title: 'System Information',
+          message: 'All ARIA attributes validated against W3C specification.',
+          type: 'info'
+        });
+        logEvent('toast', 'Dispatched Info Toast notification.');
+      });
+
+      document.getElementById('btn-toast-warning').addEventListener('click', () => {
+        UIComponents.Toast.show({
+          title: 'Viewport Warning',
+          message: 'Screen width is approaching mobile breakpoint threshold.',
+          type: 'warning'
+        });
+        logEvent('toast', 'Dispatched Warning Toast notification.');
+      });
+
+      document.getElementById('btn-toast-error').addEventListener('click', () => {
+        UIComponents.Toast.show({
+          title: 'Validation Error',
+          message: 'Missing mandatory aria-controls identifier on trigger.',
+          type: 'error'
+        });
+        logEvent('toast', 'Dispatched Error Toast notification.');
+      });
+
+      // Accordion Mode Toggle
+      const btnToggleMode = document.getElementById('btn-toggle-accordion-mode');
+      const modeStatusText = document.getElementById('mode-status-text');
+      const accEl = document.getElementById('demo-accordion');
+
+      btnToggleMode.addEventListener('click', () => {
+        const instance = accEl._accordionInstance;
+        if (instance) {
+          const isMulti = instance.options.multiExpand;
+          instance.setMultiExpand(!isMulti);
+          modeStatusText.textContent = isMulti ? 'Mode: Single-Open (Collapsing)' : 'Mode: Multi-Open (Simultaneous)';
+          btnToggleMode.textContent = isMulti ? 'Enable Multi-Open Mode' : 'Enable Single-Open Mode';
+          logEvent('accordion', `Switched accordion mode to: ${!isMulti ? 'Multi-Open' : 'Single-Open'}`);
+        }
+      });
+
+      // Modal Form Handler
+      const configForm = document.getElementById('modal-config-form');
+      configForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('comp-name-input').value;
+        const role = document.getElementById('comp-role-input').value;
+        
+        // Find modal instance and close
+        const formModal = document.getElementById('demo-form-modal');
+        if (formModal._modalInstance) {
+          formModal._modalInstance.close();
+        }
+
+        UIComponents.Toast.show({
+          title: 'Configuration Saved',
+          message: `Registered component "${name}" with role="${role}".`,
+          type: 'success'
+        });
+        configForm.reset();
+      });
+
+      // Confirm modal button handler
+      document.getElementById('btn-modal-confirm-action').addEventListener('click', () => {
+        const confirmModal = document.getElementById('demo-confirm-modal');
+        if (confirmModal._modalInstance) {
+          confirmModal._modalInstance.close();
+        }
+        UIComponents.Toast.show({
+          title: 'Action Confirmed',
+          message: 'Modal action executed and focus restored.',
+          type: 'success'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,773 @@
+/* ==========================================================================
+   INTERACTIVE UI COMPONENT SUITE STYLESHEET
+   Week 2 Deliverable: Production-Grade, Accessible Component Styling
+   Components: Modals, Tabs, Accordions, Toasts, and Testing Playground
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & CSS CUSTOM PROPERTIES
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Accents */
+  --ui-primary: #4f46e5;
+  --ui-primary-hover: #4338ca;
+  --ui-primary-light: #e0e7ff;
+  --ui-cyan: #06b6d4;
+  --ui-purple: #8b5cf6;
+  --ui-emerald: #10b981;
+  --ui-amber: #f59e0b;
+  --ui-rose: #f43f5e;
+
+  /* Surfaces & Backgrounds */
+  --ui-bg-base: #0a0e17;
+  --ui-bg-surface: #111827;
+  --ui-bg-elevated: #1f2937;
+  --ui-bg-card: #151d2c;
+  --ui-bg-input: #090d16;
+
+  /* Text & Borders */
+  --ui-text-main: #f9fafb;
+  --ui-text-muted: #9ca3af;
+  --ui-text-faint: #6b7280;
+  --ui-border: rgba(255, 255, 255, 0.1);
+  --ui-border-focus: #06b6d4;
+
+  /* Typography & Layout */
+  --ui-font-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ui-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ui-radius-sm: 6px;
+  --ui-radius-md: 10px;
+  --ui-radius-lg: 16px;
+  --ui-radius-full: 9999px;
+
+  /* Shadows */
+  --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+  --ui-shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.4);
+  --ui-shadow-glow: 0 0 35px -5px rgba(79, 70, 229, 0.3);
+
+  /* Transitions */
+  --ui-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-transition-bounce: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS RESET & ACCESSIBILITY DEFAULTS
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--ui-bg-base);
+  color: var(--ui-text-main);
+  font-family: var(--ui-font-base);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1.25rem 5rem;
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79, 70, 229, 0.18), transparent),
+    radial-gradient(circle 400px at 100% 30%, rgba(6, 182, 212, 0.08), transparent);
+  background-repeat: no-repeat;
+}
+
+body.ui-body-locked {
+  overflow: hidden !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ui-border-focus);
+  outline-offset: 3px;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   3. APP CONTAINER & PLAYGROUND LAYOUT
+   -------------------------------------------------------------------------- */
+.ui-app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ui-playground-header {
+  background: var(--ui-bg-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: 2.5rem;
+  box-shadow: var(--ui-shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-playground-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ui-primary), var(--ui-cyan), var(--ui-purple));
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ui-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--ui-radius-full);
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.header-desc {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--ui-text-muted);
+  max-width: 800px;
+  margin-bottom: 1.75rem;
+}
+
+.shortcuts-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ui-border);
+}
+
+.shortcuts-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ui-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.key-badge {
+  font-family: var(--ui-font-mono);
+  font-size: 0.75rem;
+  background: var(--ui-bg-elevated);
+  border: 1px solid var(--ui-border);
+  color: var(--ui-text-main);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Two-Column Grid for Component Showcase */
+.ui-components-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.ui-component-card {
+  background: var(--ui-bg-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--ui-shadow-md);
+  transition: border-color var(--ui-transition-fast);
+}
+
+.ui-component-card:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ui-border);
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ui-radius-md);
+  background: rgba(79, 70, 229, 0.15);
+  color: #818cf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.aria-tag {
+  font-family: var(--ui-font-mono);
+  font-size: 0.75rem;
+  color: var(--ui-cyan);
+  background: rgba(6, 182, 212, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS & CONTROLS
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--ui-radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--ui-transition-fast);
+}
+
+.btn-primary {
+  background: var(--ui-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--ui-primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--ui-bg-elevated);
+  color: var(--ui-text-main);
+  border-color: var(--ui-border);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--ui-rose);
+  border-color: rgba(244, 63, 94, 0.3);
+}
+.btn-danger:hover {
+  background: var(--ui-rose);
+  color: #ffffff;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   5. MODAL COMPONENT STYLES
+   -------------------------------------------------------------------------- */
+.ui-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity var(--ui-transition-base);
+}
+
+.ui-modal.active {
+  opacity: 1;
+}
+
+.ui-modal-dialog {
+  background: var(--ui-bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--ui-radius-lg);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--ui-shadow-lg), var(--ui-shadow-glow);
+  transform: scale(0.92) translateY(12px);
+  transition: transform var(--ui-transition-bounce);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ui-modal.active .ui-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.ui-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--ui-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ui-modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ui-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--ui-radius-sm);
+  transition: color var(--ui-transition-fast);
+}
+
+.ui-modal-close:hover {
+  color: #ffffff;
+}
+
+.ui-modal-body {
+  padding: 1.75rem;
+  color: var(--ui-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ui-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid var(--ui-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Modal Form Styles */
+.modal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ui-text-main);
+}
+
+.modal-form-input {
+  background: var(--ui-bg-input);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  padding: 0.65rem 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: border-color var(--ui-transition-fast);
+}
+
+.modal-form-input:focus {
+  border-color: var(--ui-cyan);
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. TAB SYSTEM COMPONENT STYLES
+   -------------------------------------------------------------------------- */
+.ui-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-tablist {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--ui-bg-elevated);
+  padding: 6px;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border);
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+}
+
+.ui-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--ui-radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: all var(--ui-transition-fast);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.ui-tab:hover {
+  color: #ffffff;
+}
+
+.ui-tab.active {
+  background: var(--ui-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+}
+
+.ui-tabpanel {
+  background: var(--ui-bg-card);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  padding: 1.5rem;
+  display: none;
+}
+
+.ui-tabpanel.active {
+  display: block;
+  animation: tabFade 0.25s ease-in-out;
+}
+
+@keyframes tabFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tab-spec-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   7. ACCORDION COMPONENT STYLES
+   -------------------------------------------------------------------------- */
+.ui-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ui-accordion-item {
+  background: var(--ui-bg-card);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  overflow: hidden;
+  transition: border-color var(--ui-transition-fast);
+}
+
+.ui-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  padding: 1.1rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--ui-transition-fast);
+}
+
+.ui-accordion-trigger:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ui-accordion-trigger.active {
+  color: var(--ui-cyan);
+}
+
+.accordion-chevron {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--ui-transition-base);
+  color: var(--ui-text-faint);
+}
+
+.ui-accordion-trigger.active .accordion-chevron {
+  transform: rotate(180deg);
+  color: var(--ui-cyan);
+}
+
+.ui-accordion-panel {
+  padding: 0 1.4rem 1.25rem;
+  color: var(--ui-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-top: 1px solid transparent;
+}
+
+.ui-accordion-panel.active {
+  border-top-color: rgba(255, 255, 255, 0.05);
+  animation: accSlide 0.2s ease-out;
+}
+
+@keyframes accSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.accordion-toggle-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.accordion-mode-label {
+  font-size: 0.85rem;
+  color: var(--ui-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. TOAST NOTIFICATION STYLES
+   -------------------------------------------------------------------------- */
+.ui-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 380px;
+  width: calc(100% - 48px);
+  pointer-events: none;
+}
+
+.ui-toast {
+  pointer-events: auto;
+  background: var(--ui-bg-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--ui-shadow-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  transform: translateX(110%);
+  opacity: 0;
+  transition: transform var(--ui-transition-bounce), opacity var(--ui-transition-base);
+}
+
+.ui-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.ui-toast-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--ui-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ui-toast-content {
+  flex-grow: 1;
+}
+
+.ui-toast-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.ui-toast-message {
+  font-size: 0.82rem;
+  color: var(--ui-text-muted);
+}
+
+.ui-toast-close {
+  background: transparent;
+  border: none;
+  color: var(--ui-text-faint);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ui-toast-close:hover {
+  color: #ffffff;
+}
+
+/* Toast Color Variants */
+.ui-toast-success { border-left: 4px solid var(--ui-emerald); }
+.ui-toast-success .ui-toast-icon { background: rgba(16, 185, 129, 0.2); color: var(--ui-emerald); }
+
+.ui-toast-info { border-left: 4px solid var(--ui-cyan); }
+.ui-toast-info .ui-toast-icon { background: rgba(6, 182, 212, 0.2); color: var(--ui-cyan); }
+
+.ui-toast-warning { border-left: 4px solid var(--ui-amber); }
+.ui-toast-warning .ui-toast-icon { background: rgba(245, 158, 11, 0.2); color: var(--ui-amber); }
+
+.ui-toast-error { border-left: 4px solid var(--ui-rose); }
+.ui-toast-error .ui-toast-icon { background: rgba(244, 63, 94, 0.2); color: var(--ui-rose); }
+
+/* --------------------------------------------------------------------------
+   9. LIVE EVENT LOGGER CONSOLE
+   -------------------------------------------------------------------------- */
+.ui-event-logger {
+  background: var(--ui-bg-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--ui-shadow-md);
+}
+
+.logger-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.logger-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logger-box {
+  background: #060910;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--ui-radius-md);
+  padding: 1rem 1.25rem;
+  font-family: var(--ui-font-mono);
+  font-size: 0.8rem;
+  color: var(--ui-text-muted);
+  height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+}
+
+.log-entry {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.log-time {
+  color: var(--ui-text-faint);
+}
+
+.log-event-modal { color: #a78bfa; }
+.log-event-tabs { color: var(--ui-cyan); }
+.log-event-accordion { color: var(--ui-emerald); }
+.log-event-toast { color: var(--ui-amber); }
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .ui-components-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ui-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .ui-modal-dialog {
+    max-width: 100%;
+    border-radius: var(--ui-radius-lg) var(--ui-radius-lg) 0 0;
+    transform: translateY(100%);
+  }
+
+  .ui-modal.active .ui-modal-dialog {
+    transform: translateY(0);
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+
+  .ui-tablist {
+    flex-direction: column;
+  }
+
+  .ui-toast-container {
+    top: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
