@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCloud Landing Page - Wireframe & Layout Specification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wire-bg: #0d1117;
+      --wire-surface: #161b22;
+      --wire-border: #30363d;
+      --wire-accent: #58a6ff;
+      --wire-accent-cyan: #39c5bb;
+      --wire-highlight: #7ee787;
+      --wire-text: #c9d1d9;
+      --wire-text-muted: #8b949e;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--wire-bg);
+      color: var(--wire-text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding: 2rem 1.5rem 5rem;
+      background-image: 
+        radial-gradient(var(--wire-border) 1px, transparent 0),
+        radial-gradient(var(--wire-border) 1px, transparent 0);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header.spec-header {
+      background: var(--wire-surface);
+      border: 1px solid var(--wire-border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .spec-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--wire-accent-cyan);
+      background: rgba(57, 197, 187, 0.15);
+      border: 1px solid rgba(57, 197, 187, 0.3);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: var(--wire-text-muted);
+      max-width: 800px;
+      margin-bottom: 1.75rem;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-live {
+      background: var(--wire-accent);
+      color: #0d1117;
+    }
+
+    .btn-live:hover {
+      background: #79b8ff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--wire-border);
+      color: var(--wire-text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--wire-accent);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 24px;
+      background: var(--wire-accent-cyan);
+      border-radius: 2px;
+    }
+
+    /* Comparison Grid */
+    .viewports-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .viewport-card {
+      background: var(--wire-surface);
+      border: 1px solid var(--wire-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+
+    .viewport-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--wire-border);
+    }
+
+    .viewport-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .viewport-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--wire-accent);
+      background: rgba(88, 166, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* Blueprint Diagram Elements */
+    .wire-frame-box {
+      border: 2px dashed #484f58;
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(13, 17, 23, 0.6);
+    }
+
+    .wire-block {
+      border: 1px solid #484f58;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      padding: 0.75rem;
+      position: relative;
+    }
+
+    .wire-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--wire-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .wire-content-dummy {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      height: 12px;
+      margin-bottom: 6px;
+    }
+
+    .wire-content-dummy.w-80 { width: 80%; }
+    .wire-content-dummy.w-60 { width: 60%; }
+    .wire-content-dummy.w-40 { width: 40%; }
+    .wire-content-dummy.h-30 { height: 30px; }
+    .wire-content-dummy.h-80 { height: 80px; }
+
+    .wire-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .wire-3-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .wire-4-col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    /* Mobile specific wireframe adjustments */
+    .mobile-frame {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Specifications Table */
+    .spec-table-wrap {
+      background: var(--wire-surface);
+      border: 1px solid var(--wire-border);
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 3rem;
+    }
+
+    table.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    table.spec-table th, table.spec-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--wire-border);
+    }
+
+    table.spec-table th {
+      background: rgba(255, 255, 255, 0.02);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    table.spec-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-semantic {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--wire-highlight);
+      background: rgba(126, 231, 135, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .viewports-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="spec-header">
+      <span class="spec-badge">DESIGN PROTOTYPE &bull; BLUEPRINT SPECIFICATION</span>
+      <h1>NovaCloud Landing Page Wireframe</h1>
+      <p class="lead">
+        This document details the architectural layout, responsive wireframe schematics, and UX breakdown used to construct the live NovaCloud responsive landing page.
+      </p>
+      <div class="action-row">
+        <a href="index.html" class="btn btn-live">Launch Live Landing Page &rarr;</a>
+        <a href="#schematics" class="btn btn-outline">Explore Wireframe Schematics</a>
+      </div>
+    </header>
+
+    <h2 class="section-title" id="schematics">Desktop vs Mobile Wireframe Comparison</h2>
+    <div class="viewports-grid">
+      
+      <!-- DESKTOP SCHEMATIC -->
+      <div class="viewport-card">
+        <div class="viewport-header">
+          <span class="viewport-title">Desktop Blueprint (1024px - 1440px)</span>
+          <span class="viewport-tag">Full-Width Flex/Grid</span>
+        </div>
+
+        <div class="wire-frame-box">
+          <!-- Header -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Header &bull; &lt;header&gt;</span>
+              <span>Flexbox &bull; Sticky</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="wire-content-dummy w-40" style="height: 20px;"></div>
+              <div class="wire-content-dummy w-40" style="height: 20px;"></div>
+            </div>
+          </div>
+
+          <!-- Hero -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Hero Section &bull; &lt;section id="hero"&gt;</span>
+              <span>2-Column Grid (1fr 1fr)</span>
+            </div>
+            <div class="wire-row">
+              <div>
+                <div class="wire-content-dummy w-40"></div>
+                <div class="wire-content-dummy h-30" style="margin-bottom: 12px;"></div>
+                <div class="wire-content-dummy w-80"></div>
+                <div class="wire-content-dummy w-60"></div>
+                <div style="display: flex; gap: 8px; margin-top: 12px;">
+                  <div class="wire-content-dummy w-40 h-30"></div>
+                  <div class="wire-content-dummy w-40 h-30"></div>
+                </div>
+              </div>
+              <div>
+                <div class="wire-content-dummy h-80"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ticker -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Social Proof Bar &bull; &lt;section class="section-ticker"&gt;</span>
+              <span>Flex row &bull; space-around</span>
+            </div>
+            <div class="wire-content-dummy w-80" style="margin: 0 auto;"></div>
+          </div>
+
+          <!-- Features -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Feature Highlights &bull; &lt;section id="features"&gt;</span>
+              <span>CSS Grid &bull; 3 Columns (repeat(3, 1fr))</span>
+            </div>
+            <div class="wire-3-col">
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+            </div>
+          </div>
+
+          <!-- Solutions / Tabbed -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Product Spotlight &bull; &lt;section id="solutions"&gt;</span>
+              <span>Tab Control + 2-Column Split</span>
+            </div>
+            <div class="wire-row">
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+            </div>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Testimonials &bull; &lt;section id="testimonials"&gt;</span>
+              <span>CSS Grid &bull; 3 Columns</span>
+            </div>
+            <div class="wire-3-col">
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+            </div>
+          </div>
+
+          <!-- Pricing -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Pricing &bull; &lt;section id="pricing"&gt;</span>
+              <span>Toggle + 3-Tier Grid</span>
+            </div>
+            <div class="wire-3-col">
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Footer &bull; &lt;footer&gt;</span>
+              <span>4-Column Grid (2fr 1fr 1fr 1fr)</span>
+            </div>
+            <div class="wire-4-col">
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+              <div class="wire-content-dummy h-80"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MOBILE BLUEPRINT -->
+      <div class="viewport-card">
+        <div class="viewport-header">
+          <span class="viewport-title">Mobile Blueprint (375px - 768px)</span>
+          <span class="viewport-tag">Single-Col Stack</span>
+        </div>
+
+        <div class="wire-frame-box mobile-frame">
+          <!-- Header -->
+          <div class="wire-block">
+            <div class="wire-label">
+              <span>Header</span>
+              <span>Logo + ☰</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <div class="wire-content-dummy w-40"></div>
+              <div class="wire-content-dummy" style="width: 24px; height: 18px;"></div>
+            </div>
+          </div>
+
+          <!-- Hero -->
+          <div class="wire-block">
+            <div class="wire-label"><span>Hero (Stacked)</span></div>
+            <div class="wire-content-dummy w-80"></div>
+            <div class="wire-content-dummy h-30"></div>
+            <div class="wire-content-dummy w-60"></div>
+            <div class="wire-content-dummy h-30" style="margin-top: 8px;"></div>
+            <div class="wire-content-dummy h-80" style="margin-top: 8px;"></div>
+          </div>
+
+          <!-- Features Single Column -->
+          <div class="wire-block">
+            <div class="wire-label"><span>Features (1 Col)</span></div>
+            <div class="wire-content-dummy h-80" style="margin-bottom: 8px;"></div>
+            <div class="wire-content-dummy h-80"></div>
+          </div>
+
+          <!-- Pricing Single Column -->
+          <div class="wire-block">
+            <div class="wire-label"><span>Pricing (1 Col)</span></div>
+            <div class="wire-content-dummy h-80"></div>
+          </div>
+
+          <!-- Footer Stacked -->
+          <div class="wire-block">
+            <div class="wire-label"><span>Footer (1 Col)</span></div>
+            <div class="wire-content-dummy w-60"></div>
+            <div class="wire-content-dummy w-80"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SPECIFICATIONS BREAKDOWN -->
+    <h2 class="section-title">Layout & Semantic Specifications</h2>
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Semantic Element</th>
+            <th>Layout Technique</th>
+            <th>Responsive Transformation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Header & Nav</td>
+            <td><span class="badge-semantic">&lt;header&gt; &lt;nav&gt;</span></td>
+            <td>Flexbox, sticky glassmorphic</td>
+            <td>Desktop inline list collapses into full-screen sliding off-canvas drawer with hamburger toggle.</td>
+          </tr>
+          <tr>
+            <td>Hero Section</td>
+            <td><span class="badge-semantic">&lt;section id="hero"&gt;</span></td>
+            <td>2-Column CSS Grid (1fr 1fr)</td>
+            <td>Side-by-side text and interactive mockup collapses to centered single-column layout.</td>
+          </tr>
+          <tr>
+            <td>Client Logos</td>
+            <td><span class="badge-semantic">&lt;section class="ticker"&gt;</span></td>
+            <td>Flexbox with flex-wrap</td>
+            <td>Scales spacing and font size cleanly across screens without horizontal overflow.</td>
+          </tr>
+          <tr>
+            <td>Feature Highlights</td>
+            <td><span class="badge-semantic">&lt;section id="features"&gt;</span></td>
+            <td>CSS Grid <code>repeat(auto-fit, minmax(320px, 1fr))</code></td>
+            <td>Fluidly transitions from 3 columns (desktop) to 2 columns (tablet) and 1 column (mobile).</td>
+          </tr>
+          <tr>
+            <td>Product Tour</td>
+            <td><span class="badge-semantic">&lt;section id="solutions"&gt;</span></td>
+            <td>Tabbed Flex controls + 2-Col Grid</td>
+            <td>Interactive tab switcher toggles declarative code, telemetry metrics, and compliance cards.</td>
+          </tr>
+          <tr>
+            <td>Testimonials</td>
+            <td><span class="badge-semantic">&lt;section id="testimonials"&gt;</span></td>
+            <td>CSS Grid <code>repeat(auto-fit, minmax(320px, 1fr))</code></td>
+            <td>3 review cards with star ratings, quotes, and avatars stack vertically on smaller viewports.</td>
+          </tr>
+          <tr>
+            <td>Pricing Matrix</td>
+            <td><span class="badge-semantic">&lt;section id="pricing"&gt;</span></td>
+            <td>CSS Grid + Flexbox toggle</td>
+            <td>Switching Monthly vs Annual dynamically re-calculates pricing values with a 20% discount.</td>
+          </tr>
+          <tr>
+            <td>FAQ Accordion</td>
+            <td><span class="badge-semantic">&lt;details&gt; &lt;summary&gt;</span></td>
+            <td>Native HTML5 disclosure widget</td>
+            <td>Accessible, keyboard navigable, animated disclosure icons, and automatic sibling collapse.</td>
+          </tr>
+          <tr>
+            <td>CTA Banner</td>
+            <td><span class="badge-semantic">&lt;section id="cta"&gt;</span></td>
+            <td>Flexbox form container</td>
+            <td>Horizontal input + submit button stacks into full-width vertical controls on mobile.</td>
+          </tr>
+          <tr>
+            <td>Footer</td>
+            <td><span class="badge-semantic">&lt;footer&gt;</span></td>
+            <td>CSS Grid (2fr 1fr 1fr 1fr)</td>
+            <td>4 columns collapse into a 2x2 grid on tablet and a single vertical column on mobile.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</body>
+</html>

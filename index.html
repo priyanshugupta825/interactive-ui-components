@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NovaCloud - Next-generation AI-powered cloud workflow automation platform. Accelerate development, streamline operations, and scale effortlessly.">
+  <meta name="theme-color" content="#4f46e5">
+  <title>NovaCloud | Intelligent Cloud Workflow Automation</title>
+
+  <!-- Google Fonts: Inter for crisp modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ================================================================= -->
+  <!-- SKIP TO MAIN CONTENT LINK (Accessibility Best Practice)           -->
+  <!-- ================================================================= -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ================================================================= -->
+  <!-- HEADER & NAVIGATION                                               -->
+  <!-- Sticky, responsive header with accessible mobile drawer navigation -->
+  <!-- ================================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" aria-label="NovaCloud Home">
+        <svg class="brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="url(#logo-grad)" />
+          <path d="M10 20L16 9L22 20H10Z" fill="#ffffff" fill-opacity="0.9" />
+          <path d="M13 20L16 14L19 20H13Z" fill="#4f46e5" />
+          <defs>
+            <linearGradient id="logo-grad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4f46e5" />
+              <stop offset="0.5" stop-color="#7c3aed" />
+              <stop offset="1" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="brand-text">Nova<span class="brand-accent">Cloud</span></span>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Menu -->
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#solutions" class="nav-link">Solutions</a></li>
+          <li class="nav-item"><a href="#testimonials" class="nav-link">Reviews</a></li>
+          <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+          <li class="nav-item"><a href="wireframe.html" class="nav-link wireframe-badge" target="_blank" rel="noopener">Wireframe Spec ↗</a></li>
+        </ul>
+        <!-- Header Actions / CTAs -->
+        <div class="nav-actions">
+          <a href="#pricing" class="btn btn-ghost">Sign In</a>
+          <a href="#cta" class="btn btn-primary">Start Free Trial</a>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Hamburger Toggle Button -->
+      <button 
+        type="button" 
+        class="nav-toggle" 
+        id="nav-toggle" 
+        aria-controls="site-nav" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Backdrop Overlay for Click-Outside to Dismiss -->
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <!-- ================================================================= -->
+  <!-- MAIN CONTENT CONTAINER                                            -->
+  <!-- ================================================================= -->
+  <main id="main-content">
+    
+    <!-- =============================================================== -->
+    <!-- SECTION 1: HERO SECTION                                         -->
+    <!-- Wireframe: Headline, subhead, dual CTAs, live app preview card  -->
+    <!-- =============================================================== -->
+    <section class="section hero" id="hero">
+      <div class="container hero-container">
+        <!-- Hero Text & Value Proposition -->
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span class="badge-text">NovaCloud 2.0 is Live &bull; Built for High-Scale Teams</span>
+          </div>
+          <h1 class="hero-title">
+            Intelligent cloud automation for <span class="gradient-text">modern engineering</span> teams.
+          </h1>
+          <p class="hero-subtitle">
+            Orchestrate complex cloud pipelines, eliminate deployment friction, and cut operational overhead by 40% with AI-driven workflow infrastructure.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#cta" class="btn btn-primary btn-lg">
+              Start 14-Day Free Trial
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#solutions" class="btn btn-secondary btn-lg">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+              </svg>
+              Explore Live Demo
+            </a>
+          </div>
+          <!-- Hero Social Proof Indicators -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">99.99%</span>
+              <span class="stat-label">Uptime SLA</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">4.2x</span>
+              <span class="stat-label">Faster Deployments</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">25,000+</span>
+              <span class="stat-label">Global Developers</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Mockup: Interactive Dashboard Glassmorphism Card -->
+        <div class="hero-visual">
+          <div class="dashboard-preview-card">
+            <!-- Window Titlebar -->
+            <div class="card-header">
+              <div class="window-controls">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="window-title">cloud-cluster-prod-us-east &bull; Active</div>
+              <div class="window-badge">Live Sync</div>
+            </div>
+            <!-- Card Body / Simulated Metrics -->
+            <div class="card-body">
+              <div class="metric-row">
+                <div class="metric-pill">
+                  <span class="metric-label">Pipeline Velocity</span>
+                  <span class="metric-value positive">+38.4%</span>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-label">Container Failover</span>
+                  <span class="metric-value">0.12 ms</span>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-label">Cloud Cost Saved</span>
+                  <span class="metric-value positive">$14,820</span>
+                </div>
+              </div>
+
+              <!-- Visual Flow Nodes -->
+              <div class="pipeline-viz">
+                <div class="viz-node viz-node-start">
+                  <div class="node-icon">⚡</div>
+                  <div class="node-info">
+                    <span class="node-title">Git Push</span>
+                    <span class="node-status status-success">main branch</span>
+                  </div>
+                </div>
+                <div class="viz-connector"></div>
+                <div class="viz-node viz-node-ai">
+                  <div class="node-icon">🤖</div>
+                  <div class="node-info">
+                    <span class="node-title">AI Synthesis</span>
+                    <span class="node-status status-active">Optimizing...</span>
+                  </div>
+                </div>
+                <div class="viz-connector"></div>
+                <div class="viz-node viz-node-deploy">
+                  <div class="node-icon">🚀</div>
+                  <div class="node-info">
+                    <span class="node-title">Global Deploy</span>
+                    <span class="node-status status-ready">32 Regions</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal Output Simulation -->
+              <div class="terminal-box">
+                <code><span class="term-green">✔</span> Build #4192 succeeded in 1.4s</code>
+                <code><span class="term-cyan">ℹ</span> Edge workers initialized across 32 zones</code>
+                <code><span class="term-purple">⚡</span> Zero-downtime routing switched seamlessly</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 2: SOCIAL PROOF / CLIENT TRUST TICKER                   -->
+    <!-- Wireframe: Multi-logo bar showing market validation             -->
+    <!-- =============================================================== -->
+    <section class="section-ticker" aria-label="Trusted by leading organizations">
+      <div class="container">
+        <p class="ticker-label">TRUSTED BY ENGINEERING TEAMS AT WORLD-CLASS INNOVATORS</p>
+        <div class="ticker-grid">
+          <div class="logo-item"><span>HyperScale</span></div>
+          <div class="logo-item"><span>DataVortex</span></div>
+          <div class="logo-item"><span>QuantumLabs</span></div>
+          <div class="logo-item"><span>PulseMatrix</span></div>
+          <div class="logo-item"><span>AcuitySystems</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 3: FEATURE HIGHLIGHTS                                   -->
+    <!-- Wireframe: 6 responsive grid cards with icons, copy, tags       -->
+    <!-- =============================================================== -->
+    <section class="section features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Capabilities</span>
+          <h2 class="section-title">Engineered for speed, built for resiliency</h2>
+          <p class="section-desc">
+            Everything your team needs to deploy without friction, monitor cloud costs in real-time, and guarantee zero downtime.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature Card 1 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-indigo">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="feature-title">Real-time Pipeline Sync</h3>
+            <p class="feature-text">
+              Eliminate stale state with continuous bidirectional synchronization between code repositories, staging pods, and production clusters.
+            </p>
+            <span class="feature-link">Explore pipeline sync &rarr;</span>
+          </article>
+
+          <!-- Feature Card 2 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-cyan">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">AI Self-Healing Clusters</h3>
+            <p class="feature-text">
+              Autonomous agents automatically detect memory leaks, abnormal latency spikes, and routing faults to hot-patch services within milliseconds.
+            </p>
+            <span class="feature-link">Explore self-healing &rarr;</span>
+          </article>
+
+          <!-- Feature Card 3 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-purple">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Enterprise-Grade Shield</h3>
+            <p class="feature-text">
+              End-to-end SOC2 Type II compliance, zero-trust network boundaries, automatic secrets rotation, and audit logs cryptographically verified.
+            </p>
+            <span class="feature-link">Explore security &rarr;</span>
+          </article>
+
+          <!-- Feature Card 4 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-emerald">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Intelligent Cost Slasher</h3>
+            <p class="feature-text">
+              Machine learning algorithms analyze resource utilization patterns to spin down idle compute nodes and negotiate spot rates on AWS, GCP, & Azure.
+            </p>
+            <span class="feature-link">Explore cost analysis &rarr;</span>
+          </article>
+
+          <!-- Feature Card 5 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-amber">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Sub-Millisecond Edge Deploy</h3>
+            <p class="feature-text">
+              Push code directly to 300+ edge points-of-presence globally with smart request caching and instant rollback capability.
+            </p>
+            <span class="feature-link">Explore edge network &rarr;</span>
+          </article>
+
+          <!-- Feature Card 6 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-rose">
+              <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 13 23 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Collaborative Workspaces</h3>
+            <p class="feature-text">
+              Multi-tenant shared sandboxes, preview environments for pull requests, and permission delegation across distributed development teams.
+            </p>
+            <span class="feature-link">Explore collaboration &rarr;</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 4: PRODUCT SPOTLIGHT / INTERACTIVE TABBED SHOWCASE      -->
+    <!-- Wireframe: Split column layout with interactive tab switcher    -->
+    <!-- =============================================================== -->
+    <section class="section solutions" id="solutions">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Product Tour</span>
+          <h2 class="section-title">See how NovaCloud accelerates your stack</h2>
+          <p class="section-desc">
+            Toggle between core solution modules to discover how automation elevates every phase of your software lifecycle.
+          </p>
+        </div>
+
+        <!-- Interactive Tab Navigation -->
+        <div class="tab-controls" role="tablist" aria-label="Product Showcase Tabs">
+          <button 
+            type="button" 
+            class="tab-btn active" 
+            role="tab" 
+            id="tab-btn-automation" 
+            aria-selected="true" 
+            aria-controls="tab-panel-automation"
+          >
+            Workflow Automation
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn" 
+            role="tab" 
+            id="tab-btn-observability" 
+            aria-selected="false" 
+            aria-controls="tab-panel-observability"
+          >
+            Real-time Observability
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn" 
+            role="tab" 
+            id="tab-btn-compliance" 
+            aria-selected="false" 
+            aria-controls="tab-panel-compliance"
+          >
+            Security & Governance
+          </button>
+        </div>
+
+        <!-- Tab Panel 1: Automation -->
+        <div 
+          class="tab-panel active" 
+          id="tab-panel-automation" 
+          role="tabpanel" 
+          aria-labelledby="tab-btn-automation"
+        >
+          <div class="showcase-layout">
+            <div class="showcase-content">
+              <h3>Zero-touch continuous delivery with declarative guardrails</h3>
+              <p>
+                Define your multi-cloud topology in YAML or TypeScript. NovaCloud validates pull requests against compliance policies and handles canary rollouts automatically.
+              </p>
+              <ul class="checklist">
+                <li><span class="check-icon">✓</span> Automated canary releases with instant error threshold rollbacks</li>
+                <li><span class="check-icon">✓</span> Native integrations with GitHub, GitLab, Bitbucket, and AWS EKS</li>
+                <li><span class="check-icon">✓</span> Ephemeral preview environments spun up in under 15 seconds</li>
+              </ul>
+              <a href="#cta" class="btn btn-primary">Start Automating Now</a>
+            </div>
+            <div class="showcase-card">
+              <div class="code-header">
+                <span class="code-file">novacloud.pipeline.yml</span>
+                <span class="code-badge">Declarative</span>
+              </div>
+              <pre class="code-block"><code><span class="token-keyword">pipeline:</span>
+  <span class="token-key">name:</span> production-orchestration
+  <span class="token-key">target:</span> multi-region-k8s
+  <span class="token-key">strategy:</span> canary
+  <span class="token-key">guardrails:</span>
+    - <span class="token-string">p99_latency &lt; 45ms</span>
+    - <span class="token-string">error_rate &lt; 0.01%</span>
+  <span class="token-key">ai_healing:</span>
+    <span class="token-key">enabled:</span> <span class="token-boolean">true</span>
+    <span class="token-key">max_auto_remediations:</span> <span class="token-number">5</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel 2: Observability -->
+        <div 
+          class="tab-panel" 
+          id="tab-panel-observability" 
+          role="tabpanel" 
+          aria-labelledby="tab-btn-observability" 
+          hidden
+        >
+          <div class="showcase-layout">
+            <div class="showcase-content">
+              <h3>Telemetry that spots anomalies before users notice</h3>
+              <p>
+                Stream distributed traces, logs, and metrics into a unified low-latency dashboard. Let AI correlate downstream dependencies and prioritize critical alerts.
+              </p>
+              <ul class="checklist">
+                <li><span class="check-icon">✓</span> High-cardinality indexing with sub-second query response times</li>
+                <li><span class="check-icon">✓</span> Automated alert suppression during scheduled rolling deploys</li>
+                <li><span class="check-icon">✓</span> Full OpenTelemetry compatibility out-of-the-box</li>
+              </ul>
+              <a href="#cta" class="btn btn-primary">Explore Telemetry</a>
+            </div>
+            <div class="showcase-card showcase-metrics">
+              <div class="telemetry-stat-box">
+                <div class="telemetry-metric">
+                  <span class="t-value">42M</span>
+                  <span class="t-label">Events Processed/Sec</span>
+                </div>
+                <div class="telemetry-metric">
+                  <span class="t-value">99.98%</span>
+                  <span class="t-label">Noise Reduction</span>
+                </div>
+              </div>
+              <div class="telemetry-chart-bar">
+                <div class="bar-fill" style="width: 88%;"><span>Global Latency: 22ms</span></div>
+              </div>
+              <div class="telemetry-log">
+                <span class="log-tag tag-info">AI INSIGHT</span> Service 'auth-gateway' memory stabilized after auto-scale action.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel 3: Compliance -->
+        <div 
+          class="tab-panel" 
+          id="tab-panel-compliance" 
+          role="tabpanel" 
+          aria-labelledby="tab-btn-compliance" 
+          hidden
+        >
+          <div class="showcase-layout">
+            <div class="showcase-content">
+              <h3>Continuous compliance and zero-trust security enforcement</h3>
+              <p>
+                Pass your SOC2, HIPAA, and ISO 27001 audits without manual screenshot gathering. NovaCloud continuously audits configurations and generates compliance manifests.
+              </p>
+              <ul class="checklist">
+                <li><span class="check-icon">✓</span> Automated drift detection across all registered infrastructure</li>
+                <li><span class="check-icon">✓</span> Hardware-isolated key vaults with just-in-time access granting</li>
+                <li><span class="check-icon">✓</span> Exportable audit trails signed with SHA-256 signatures</li>
+              </ul>
+              <a href="#cta" class="btn btn-primary">Review Security Whitepaper</a>
+            </div>
+            <div class="showcase-card showcase-security">
+              <div class="compliance-badge-grid">
+                <div class="compliance-item">
+                  <div class="c-icon">🛡️</div>
+                  <div class="c-name">SOC 2 Type II</div>
+                  <div class="c-status">Certified</div>
+                </div>
+                <div class="compliance-item">
+                  <div class="c-icon">🔒</div>
+                  <div class="c-name">HIPAA & GDPR</div>
+                  <div class="c-status">Compliant</div>
+                </div>
+                <div class="compliance-item">
+                  <div class="c-icon">🔑</div>
+                  <div class="c-name">Zero-Trust RBAC</div>
+                  <div class="c-status">Active</div>
+                </div>
+              </div>
+              <div class="security-audit-summary">
+                <span class="term-green">✔ 0 vulnerabilities detected in 428 active container manifests</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 5: SOCIAL PROOF / TESTIMONIALS                          -->
+    <!-- Wireframe: 3-column responsive card layout with star ratings    -->
+    <!-- =============================================================== -->
+    <section class="section testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">User Stories</span>
+          <h2 class="section-title">Loved by developers, trusted by CTOs</h2>
+          <p class="section-desc">
+            Discover how leading technical leaders transform their velocity and uptime with NovaCloud.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <article class="testimonial-card">
+            <div class="star-rating" aria-label="Rating: 5 out of 5 stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-quote">
+              "NovaCloud cut our Kubernetes release cycles from 45 minutes down to 90 seconds. The self-healing clusters caught two critical edge outages before our on-call team even woke up."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-1" aria-hidden="true">SM</div>
+              <div class="author-details">
+                <span class="author-name">Sarah Mitchell</span>
+                <span class="author-title">VP of Engineering at DataVortex</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="testimonial-card highlighted-testimonial">
+            <div class="star-rating" aria-label="Rating: 5 out of 5 stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-quote">
+              "We migrated 600+ microservices over a single weekend. Our AWS bill dropped by 34% in the very first month thanks to intelligent autoscaling and automated spot instances."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-2" aria-hidden="true">DC</div>
+              <div class="author-details">
+                <span class="author-name">David Chen</span>
+                <span class="author-title">Chief Architect at HyperScale</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="testimonial-card">
+            <div class="star-rating" aria-label="Rating: 5 out of 5 stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-quote">
+              "The developer experience is simply second to none. Creating preview environments for every pull request has empowered our frontend team to ship daily without regressions."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-3" aria-hidden="true">EL</div>
+              <div class="author-details">
+                <span class="author-name">Elena Rostova</span>
+                <span class="author-title">Principal Infrastructure Engineer at PulseMatrix</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 6: PRICING PLANS & BILLING TOGGLE                       -->
+    <!-- Wireframe: Monthly / Annual toggle, 3 responsive tiers          -->
+    <!-- =============================================================== -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Flexible Pricing</span>
+          <h2 class="section-title">Transparent plans that scale with your team</h2>
+          <p class="section-desc">
+            Get started for free. Upgrade as your workloads grow. No surprise fees.
+          </p>
+        </div>
+
+        <!-- Pricing Billing Toggle (Monthly vs Annual with 20% discount) -->
+        <div class="pricing-toggle-wrapper">
+          <span class="toggle-label" id="monthly-label">Monthly</span>
+          <button 
+            type="button" 
+            class="pricing-toggle-switch" 
+            id="pricing-toggle" 
+            role="switch" 
+            aria-checked="false" 
+            aria-label="Toggle between monthly and annual billing"
+          >
+            <span class="toggle-slider"></span>
+          </button>
+          <span class="toggle-label" id="annual-label">
+            Annually 
+            <span class="discount-badge">Save 20%</span>
+          </span>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="pricing-grid">
+          <!-- Starter Tier -->
+          <article class="pricing-card">
+            <div class="pricing-card-header">
+              <h3 class="tier-name">Starter</h3>
+              <p class="tier-desc">Ideal for small teams and fast-moving startup projects.</p>
+              <div class="price-display">
+                <span class="currency">$</span>
+                <span class="price-amount" data-monthly="29" data-annual="24">29</span>
+                <span class="price-period">/ month</span>
+              </div>
+              <span class="billed-note">Billed monthly</span>
+            </div>
+            <ul class="tier-features">
+              <li><span class="check-icon">✓</span> Up to 5 team members</li>
+              <li><span class="check-icon">✓</span> 50 concurrent build pipelines</li>
+              <li><span class="check-icon">✓</span> Community Slack & Docs support</li>
+              <li><span class="check-icon">✓</span> 7-day metric retention</li>
+              <li class="disabled"><span class="cross-icon">✕</span> AI self-healing automation</li>
+              <li class="disabled"><span class="cross-icon">✕</span> Custom compliance audits</li>
+            </ul>
+            <a href="#cta" class="btn btn-secondary btn-block">Get Started Free</a>
+          </article>
+
+          <!-- Pro Tier (Highlighted / Most Popular) -->
+          <article class="pricing-card popular-card">
+            <div class="popular-ribbon">Most Popular</div>
+            <div class="pricing-card-header">
+              <h3 class="tier-name">Professional</h3>
+              <p class="tier-desc">Full power for scaling engineering teams and microservices.</p>
+              <div class="price-display">
+                <span class="currency">$</span>
+                <span class="price-amount" data-monthly="89" data-annual="71">89</span>
+                <span class="price-period">/ month</span>
+              </div>
+              <span class="billed-note">Billed monthly</span>
+            </div>
+            <ul class="tier-features">
+              <li><span class="check-icon">✓</span> Up to 25 team members</li>
+              <li><span class="check-icon">✓</span> Unlimited concurrent builds</li>
+              <li><span class="check-icon">✓</span> AI self-healing & anomaly triage</li>
+              <li><span class="check-icon">✓</span> 30-day high-cardinality telemetry</li>
+              <li><span class="check-icon">✓</span> Priority 24/7 engineering support</li>
+              <li><span class="check-icon">✓</span> Automated cloud cost optimizer</li>
+            </ul>
+            <a href="#cta" class="btn btn-primary btn-block">Start 14-Day Free Trial</a>
+          </article>
+
+          <!-- Enterprise Tier -->
+          <article class="pricing-card">
+            <div class="pricing-card-header">
+              <h3 class="tier-name">Enterprise</h3>
+              <p class="tier-desc">Dedicated infrastructure, bespoke security, and SLA guarantee.</p>
+              <div class="price-display">
+                <span class="currency">$</span>
+                <span class="price-amount" data-monthly="249" data-annual="199">249</span>
+                <span class="price-period">/ month</span>
+              </div>
+              <span class="billed-note">Billed monthly</span>
+            </div>
+            <ul class="tier-features">
+              <li><span class="check-icon">✓</span> Unlimited team seats</li>
+              <li><span class="check-icon">✓</span> Dedicated VPC or on-prem deploy</li>
+              <li><span class="check-icon">✓</span> 99.99% uptime financial SLA</li>
+              <li><span class="check-icon">✓</span> Custom compliance & SOC2 reports</li>
+              <li><span class="check-icon">✓</span> Dedicated Customer Success Manager</li>
+              <li><span class="check-icon">✓</span> Custom SSO & SCIM directory sync</li>
+            </ul>
+            <a href="#cta" class="btn btn-secondary btn-block">Contact Sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 7: FREQUENTLY ASKED QUESTIONS (FAQ)                     -->
+    <!-- Wireframe: Semantic accordion list with disclosure icons        -->
+    <!-- =============================================================== -->
+    <section class="section faq" id="faq">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">
+            Everything you need to know about getting started, billing, and system compatibility.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>How does the 14-day free trial work?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                You receive full, unrestricted access to our Professional tier for 14 days without entering any credit card information. You can connect repositories, run automated pipelines, and test edge rollouts. When your trial ends, you can choose a paid tier or stay on our free developer tier.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Which cloud providers and orchestrators are supported?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                NovaCloud supports AWS (EKS, ECS, Lambda), Google Cloud (GKE, Cloud Run), Microsoft Azure (AKS, Container Apps), and bare-metal Kubernetes clusters. Our CLI and agent auto-discover your cluster configuration within minutes.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How does NovaCloud ensure our code and data remain secure?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                We adhere to strict zero-knowledge principles. Your source code and runtime environment variables are encrypted at rest using AES-256 and in transit via TLS 1.3. We undergo annual SOC2 Type II and ISO 27001 third-party audits.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I switch between monthly and annual billing at any time?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Yes! You can switch plans or change your billing interval at any point directly from the workspace settings dashboard. Any unused prorated balance will be automatically applied as credit.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Do you offer custom onboarding and migration assistance?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Yes! For Enterprise customers, our Solutions Engineering team provides white-glove architecture reviews, CI/CD pipeline migration scripts, and dedicated training sessions for your engineering staff.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- SECTION 8: CALL TO ACTION (CTA) BANNER                          -->
+    <!-- Wireframe: High-contrast banner with instant email capture form -->
+    <!-- =============================================================== -->
+    <section class="section cta-section" id="cta">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to accelerate your engineering workflow?</h2>
+            <p class="cta-desc">
+              Join thousands of developers shipping resilient cloud software with NovaCloud today. Get started in less than two minutes.
+            </p>
+            <!-- Interactive Signup Form -->
+            <form class="cta-form" id="lead-form" novalidate>
+              <div class="form-group">
+                <label for="lead-email" class="sr-only">Work Email Address</label>
+                <input 
+                  type="email" 
+                  id="lead-email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="Enter your work email..." 
+                  required
+                  aria-required="true"
+                >
+                <button type="submit" class="btn btn-cta-submit">
+                  Start Free Trial
+                </button>
+              </div>
+              <div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div>
+            </form>
+            <p class="cta-disclaimer">
+              No credit card required &bull; 14-day free trial &bull; Instant setup
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- FOOTER                                                            -->
+  <!-- Wireframe: 4-column responsive links, brand summary, copyright    -->
+  <!-- ================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <!-- Footer Column 1: Brand & Mission -->
+        <div class="footer-col footer-col-brand">
+          <a href="#hero" class="brand-logo footer-logo" aria-label="NovaCloud Home">
+            <svg class="brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="16" cy="16" r="14" fill="url(#footer-grad)" />
+              <path d="M10 20L16 9L22 20H10Z" fill="#ffffff" />
+              <path d="M13 20L16 14L19 20H13Z" fill="#4f46e5" />
+              <defs>
+                <linearGradient id="footer-grad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4f46e5" />
+                  <stop offset="1" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="brand-text">Nova<span class="brand-accent">Cloud</span></span>
+          </a>
+          <p class="footer-bio">
+            Next-generation autonomous cloud orchestration. Helping software teams deliver reliably, safely, and cost-effectively at global scale.
+          </p>
+          <div class="social-links" aria-label="Social media channels">
+            <a href="https://github.com" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1-2-2 2 2 0 0 1 2 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Column 2: Product -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Pipeline Engine</a></li>
+            <li><a href="#solutions">Self-Healing AI</a></li>
+            <li><a href="#solutions">Edge Deployments</a></li>
+            <li><a href="#pricing">Pricing Plans</a></li>
+            <li><a href="wireframe.html" target="_blank">Wireframe Specs</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Column 3: Resources -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#faq">Documentation</a></li>
+            <li><a href="#faq">API Reference</a></li>
+            <li><a href="#faq">System Architecture</a></li>
+            <li><a href="#faq">Status Page</a></li>
+            <li><a href="#testimonials">Customer Stories</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Column 4: Company & Legal -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">About NovaCloud</a></li>
+            <li><a href="#cta">Careers</a></li>
+            <li><a href="#faq">Security & Compliance</a></li>
+            <li><a href="#faq">Privacy Policy</a></li>
+            <li><a href="#faq">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; <span id="current-year">2026</span> NovaCloud Technologies, Inc. All rights reserved. Built with semantic HTML5, modern responsive CSS, and vanilla JS.
+        </p>
+        <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top of page">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          Back to Top
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
