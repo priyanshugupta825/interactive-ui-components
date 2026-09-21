@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A11yPortal | Accessible Information & Tech Knowledge Base</title>
+  <meta name="description" content="A fully accessible information portal adhering strictly to WCAG 2.1/2.2 Level AA and AAA standards. Featuring semantic HTML5, keyboard navigation, font scaling, high-contrast mode, and an interactive accessibility inspector.">
+  <meta name="theme-color" content="#0284c7">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================================================================= -->
+  <!-- 1. KEYBOARD BYPASS SKIP LINKS (WCAG 2.4.1 Level A)               -->
+  <!-- ================================================================= -->
+  <div class="skip-links-group" aria-label="Skip navigation links">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#article-search" class="skip-link">Skip to search articles</a>
+    <a href="#accessibility-toolbar" class="skip-link">Skip to accessibility settings</a>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 2. ACCESSIBILITY SETTINGS TOOLBAR (WCAG 1.4.4 & 1.4.3 Level AA)   -->
+  <!-- ================================================================= -->
+  <aside class="a11y-toolbar" id="accessibility-toolbar" aria-label="Accessibility Preferences Toolbar">
+    <div class="container a11y-toolbar-inner">
+      
+      <!-- Toolbar Label -->
+      <div class="a11y-toolbar-title">
+        <span class="a11y-icon" aria-hidden="true">♿</span>
+        <span>Accessibility Tools:</span>
+      </div>
+
+      <!-- Font Size Scaling Controls -->
+      <div class="toolbar-control-group" role="group" aria-label="Text Size Adjustment">
+        <span class="toolbar-group-label" id="font-size-label">Text Size:</span>
+        <button 
+          type="button" 
+          class="toolbar-btn" 
+          id="btn-font-decrease" 
+          aria-label="Decrease text size" 
+          aria-describedby="font-size-label"
+        >
+          A−
+        </button>
+        <button 
+          type="button" 
+          class="toolbar-btn active" 
+          id="btn-font-reset" 
+          aria-label="Reset text size to default (100%)" 
+          aria-describedby="font-size-label"
+          aria-pressed="true"
+        >
+          Default
+        </button>
+        <button 
+          type="button" 
+          class="toolbar-btn" 
+          id="btn-font-increase" 
+          aria-label="Increase text size to large (125%)" 
+          aria-describedby="font-size-label"
+        >
+          A+
+        </button>
+      </div>
+
+      <!-- High-Contrast Mode Toggle (WCAG 1.4.6 Level AAA) -->
+      <div class="toolbar-control-group">
+        <button 
+          type="button" 
+          class="toolbar-btn toggle-btn" 
+          id="btn-toggle-contrast" 
+          aria-pressed="false"
+        >
+          <span class="btn-icon" aria-hidden="true">◐</span>
+          <span>High Contrast (AAA)</span>
+        </button>
+      </div>
+
+      <!-- Visual Landmark Inspector (Interactive Educational Mode) -->
+      <div class="toolbar-control-group">
+        <button 
+          type="button" 
+          class="toolbar-btn toggle-btn" 
+          id="btn-toggle-landmarks" 
+          aria-pressed="false"
+          aria-describedby="landmarks-tooltip"
+        >
+          <span class="btn-icon" aria-hidden="true">📐</span>
+          <span>Inspect Semantic Landmarks</span>
+        </button>
+        <span id="landmarks-tooltip" class="sr-only">Toggles visual colored bounding boxes and labels around HTML5 landmarks</span>
+      </div>
+
+      <!-- Live Voiceover Announcer Area -->
+      <div class="a11y-live-status" id="a11y-announcer" role="status" aria-live="polite"></div>
+
+    </div>
+  </aside>
+
+  <!-- ================================================================= -->
+  <!-- 3. HEADER & PRIMARY NAVIGATION (WCAG 1.3.1 & 2.4.7)               -->
+  <!-- ================================================================= -->
+  <header class="site-header" role="banner" data-landmark="header">
+    <div class="container header-inner">
+      
+      <!-- Brand Identity -->
+      <a href="#main-content" class="brand-link" aria-label="A11yPortal Homepage">
+        <svg class="brand-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
+          <path d="M16 6C17.6569 6 19 7.34315 19 9C19 10.6569 17.6569 12 16 12C14.3431 12 13 10.6569 13 9C13 7.34315 14.3431 6 16 6Z" fill="#ffffff"/>
+          <path d="M7 15C7 14.4477 7.44772 14 8 14H24C24.5523 14 25 14.4477 25 15C25 15.5523 24.5523 16 24 16H21V25C21 25.5523 20.5523 26 20 26C19.4477 26 19 25.5523 19 25V19H13V25C13 25.5523 12.5523 26 12 26C11.4477 26 11 25.5523 11 25V16H8C7.44772 16 7 15.5523 7 15Z" fill="#ffffff"/>
+        </svg>
+        <span class="brand-title">A11y<span class="brand-accent">Portal</span></span>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav class="primary-nav" role="navigation" aria-label="Primary Navigation" data-landmark="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#featured-article" class="nav-link">Featured</a></li>
+          <li class="nav-item"><a href="#articles-grid" class="nav-link">Knowledge Base</a></li>
+          <li class="nav-item"><a href="#wcag-checklist" class="nav-link">WCAG Checklist</a></li>
+          <li class="nav-item"><a href="#newsletter-section" class="nav-link">Updates</a></li>
+          <li class="nav-item"><a href="audit-report.md" class="nav-link audit-link" target="_blank" rel="noopener">Audit Report ↗</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- 4. MAIN LANDMARK CONTENT (WCAG 1.3.1, 2.1.1, 4.1.2)               -->
+  <!-- ================================================================= -->
+  <main id="main-content" tabindex="-1" role="main" data-landmark="main">
+    <div class="container main-layout">
+
+      <!-- ============================================================= -->
+      <!-- SEARCH & FILTER SECTION (WCAG 4.1.3 Live Region Updates)      -->
+      <!-- ============================================================= -->
+      <section class="search-section" role="search" aria-label="Article Search and Filters">
+        <form class="search-form" id="search-form" onsubmit="return false;">
+          <div class="search-input-wrapper">
+            <label for="article-search" class="search-label">
+              Search Knowledge Base Articles
+            </label>
+            <div class="input-with-icon">
+              <svg class="search-svg-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+              <input 
+                type="search" 
+                id="article-search" 
+                class="search-input" 
+                placeholder="Filter by keyword (e.g., WCAG, ARIA, Keyboard, Contrast)..." 
+                autocomplete="off"
+                aria-describedby="search-instructions"
+              >
+              <button 
+                type="button" 
+                class="search-clear-btn" 
+                id="btn-clear-search" 
+                aria-label="Clear search query"
+                hidden
+              >
+                &times;
+              </button>
+            </div>
+            <p id="search-instructions" class="sr-only">
+              Type to filter articles live. Results are announced automatically as you type.
+            </p>
+          </div>
+
+          <!-- Category Quick Filter Chips -->
+          <div class="category-filters" role="group" aria-label="Filter articles by category">
+            <span class="filter-caption">Topic:</span>
+            <button type="button" class="filter-chip active" data-category="all" aria-pressed="true">All Topics</button>
+            <button type="button" class="filter-chip" data-category="wcag" aria-pressed="false">WCAG Standards</button>
+            <button type="button" class="filter-chip" data-category="aria" aria-pressed="false">ARIA & Semantics</button>
+            <button type="button" class="filter-chip" data-category="keyboard" aria-pressed="false">Keyboard Nav</button>
+            <button type="button" class="filter-chip" data-category="contrast" aria-pressed="false">Color Contrast</button>
+          </div>
+        </form>
+
+        <!-- Dynamic Screen Reader Status Message (WCAG 4.1.3 Status Messages) -->
+        <div id="search-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true">
+          Showing all 5 articles.
+        </div>
+      </section>
+
+      <!-- ============================================================= -->
+      <!-- PRIMARY CONTENT COLUMN & SIDEBAR LAYOUT                       -->
+      <!-- ============================================================= -->
+      <div class="content-columns-wrapper">
+
+        <!-- PRIMARY ARTICLES COLUMN -->
+        <div class="primary-column">
+
+          <!-- --------------------------------------------------------- -->
+          <!-- FEATURED LEAD ARTICLE                                     -->
+          <!-- --------------------------------------------------------- -->
+          <article class="featured-article" id="featured-article" aria-labelledby="featured-title" data-landmark="article">
+            <div class="article-meta-top">
+              <span class="badge-category badge-wcag">WCAG 2.2 Deep Dive</span>
+              <span class="reading-time">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                6 min read
+              </span>
+              <time datetime="2026-09-21" class="article-date">September 21, 2026</time>
+            </div>
+
+            <h1 class="article-title" id="featured-title">
+              Mastering Modern Web Accessibility: Building Digital Experiences for Everyone
+            </h1>
+
+            <p class="article-lead">
+              Web accessibility is not an optional enhancement or a post-launch checklist item; it is an essential engineering discipline. When we design for accessibility, we create resilient, performant, and intuitive applications that empower all users regardless of disability or device constraints.
+            </p>
+
+            <!-- ACCESSIBLE SIMULATED AUDIO READER (WCAG 1.2 Alternative) -->
+            <section class="audio-player-card" role="region" aria-label="Audio Reader for this article">
+              <div class="audio-player-header">
+                <div class="audio-info">
+                  <span class="audio-label">🎧 Listen to Audio Version</span>
+                  <span class="audio-duration" id="audio-time-display">0:00 / 4:15</span>
+                </div>
+                <div class="audio-controls">
+                  <button 
+                    type="button" 
+                    class="audio-btn audio-play-btn" 
+                    id="audio-play-btn" 
+                    aria-label="Play article audio narration"
+                  >
+                    <span class="play-icon" aria-hidden="true">▶</span>
+                    <span class="play-text">Play Audio</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    class="audio-btn audio-speed-btn" 
+                    id="audio-speed-btn" 
+                    aria-label="Current playback speed 1x. Click to change to 1.25x"
+                  >
+                    1.0x
+                  </button>
+                </div>
+              </div>
+
+              <!-- Accessible Range Scrubber (WAI-ARIA Slider Pattern) -->
+              <div class="audio-scrubber-wrapper">
+                <label for="audio-slider" class="sr-only">Audio playback progress</label>
+                <input 
+                  type="range" 
+                  id="audio-slider" 
+                  class="audio-slider" 
+                  min="0" 
+                  max="100" 
+                  value="0" 
+                  step="1"
+                  aria-valuemin="0" 
+                  aria-valuemax="100" 
+                  aria-valuenow="0" 
+                  aria-valuetext="0 percent elapsed"
+                >
+              </div>
+            </section>
+
+            <!-- Article Body Content -->
+            <div class="article-body">
+              <h2 class="subheading-h2">1. The Four Core Principles of WCAG (P.O.U.R.)</h2>
+              <p>
+                The Web Content Accessibility Guidelines (WCAG) are organized around four foundational pillars that guarantee universal access:
+              </p>
+              <ul class="pour-list">
+                <li><strong>Perceivable:</strong> Content and UI components must be presentable to users in ways they can perceive (e.g., text alternatives for images, captions for video, and compliant color contrast).</li>
+                <li><strong>Operable:</strong> UI navigation and components must be operable via all input methods, particularly keyboards, switch devices, and screen readers without keyboard traps.</li>
+                <li><strong>Understandable:</strong> Information, copy, and operations must be intuitive, predictable, and provide clear error messages when form validations fail.</li>
+                <li><strong>Robust:</strong> Content must be compatible with evolving user agents, browsers, assistive technologies (screen readers like NVDA, JAWS, VoiceOver), and screen magnifiers.</li>
+              </ul>
+
+              <h2 class="subheading-h2">2. Visual Focus Visibility & Keyboard Navigation</h2>
+              <p>
+                One of the most widespread accessibility anti-patterns on the web is the removal of default focus outlines via <code>outline: none</code> without an accessible alternative. Sighted keyboard navigators rely completely on visible focus rings to understand their active position on the screen.
+              </p>
+              <div class="callout-box">
+                <div class="callout-icon" aria-hidden="true">💡</div>
+                <div class="callout-text">
+                  <strong>Best Practice Tip:</strong> Always utilize the modern <code>:focus-visible</code> pseudo-class. It ensures that keyboard navigators receive bold, high-contrast focus rings while preserving standard mouse clicking ergonomics without unnecessary outlines.
+                </div>
+              </div>
+            </div>
+
+            <!-- Author Bio Section -->
+            <footer class="article-author-card">
+              <div class="author-avatar" aria-hidden="true">PG</div>
+              <div class="author-info">
+                <span class="author-name">Priyanshu Kumar Gupta</span>
+                <span class="author-role">Frontend & Accessibility Systems Engineer</span>
+              </div>
+            </footer>
+          </article>
+
+          <!-- --------------------------------------------------------- -->
+          <!-- KNOWLEDGE BASE ARTICLES GRID                              -->
+          <!-- --------------------------------------------------------- -->
+          <section class="articles-grid-section" id="articles-grid" aria-labelledby="articles-heading">
+            <div class="section-title-bar">
+              <h2 class="section-heading" id="articles-heading">Related Accessibility Guides</h2>
+              <span class="article-count-badge" id="results-count-badge">5 Guides Available</span>
+            </div>
+
+            <div class="articles-grid" id="articles-grid-container">
+
+              <!-- Article Card 1 -->
+              <article class="card-item" data-category="wcag" aria-labelledby="card-title-1" data-landmark="article">
+                <div class="card-header-meta">
+                  <span class="badge-category badge-wcag">WCAG 2.2</span>
+                  <time datetime="2026-09-15">Sep 15, 2026</time>
+                </div>
+                <h3 class="card-title" id="card-title-1">
+                  Understanding WCAG 2.2 New Success Criteria
+                </h3>
+                <p class="card-desc">
+                  An in-depth analysis of Focus Appearance (2.4.11), Target Size Minimum (2.5.8), and Redundant Entry (3.3.7) to future-proof web applications.
+                </p>
+                <div class="card-footer">
+                  <span class="card-read-time">4 min read</span>
+                  <button type="button" class="btn-card-action" aria-label="Read full guide on Understanding WCAG 2.2 New Success Criteria">
+                    Read Guide &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <!-- Article Card 2 -->
+              <article class="card-item" data-category="aria" aria-labelledby="card-title-2" data-landmark="article">
+                <div class="card-header-meta">
+                  <span class="badge-category badge-aria">ARIA & Semantics</span>
+                  <time datetime="2026-09-12">Sep 12, 2026</time>
+                </div>
+                <h3 class="card-title" id="card-title-2">
+                  Demystifying ARIA: When and When NOT to Use It
+                </h3>
+                <p class="card-desc">
+                  The First Rule of ARIA states: Do not use ARIA if a native semantic HTML5 element already exists with the built-in accessibility behavior.
+                </p>
+                <div class="card-footer">
+                  <span class="card-read-time">5 min read</span>
+                  <button type="button" class="btn-card-action" aria-label="Read full guide on Demystifying ARIA: When and When NOT to Use It">
+                    Read Guide &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <!-- Article Card 3 -->
+              <article class="card-item" data-category="keyboard" aria-labelledby="card-title-3" data-landmark="article">
+                <div class="card-header-meta">
+                  <span class="badge-category badge-keyboard">Keyboard Nav</span>
+                  <time datetime="2026-09-08">Sep 8, 2026</time>
+                </div>
+                <h3 class="card-title" id="card-title-3">
+                  Keyboard Traps and Focus Management Patterns
+                </h3>
+                <p class="card-desc">
+                  How to properly manage focus traps within modal dialogs, flyout drawers, and interactive dropdowns while ensuring seamless escape routes.
+                </p>
+                <div class="card-footer">
+                  <span class="card-read-time">7 min read</span>
+                  <button type="button" class="btn-card-action" aria-label="Read full guide on Keyboard Traps and Focus Management Patterns">
+                    Read Guide &rarr;
+                  </button>
+                </div>
+              </article>
+
+              <!-- Article Card 4 -->
+              <article class="card-item" data-category="contrast" aria-labelledby="card-title-4" data-landmark="article">
+                <div class="card-header-meta">
+                  <span class="badge-category badge-contrast">Color Contrast</span>
+                  <time datetime="2026-09-01">Sep 1, 2026</time>
+                </div>
+                <h3 class="card-title" id="card-title-4">
+                  Achieving WCAG Level AAA Color Contrast
+                </h3>
+                <p class="card-desc">
+                  Techniques for selecting color palettes that surpass 7:1 contrast ratios without sacrificing brand identity, aesthetics, or visual hierarchy.
+                </p>
+                <div class="card-footer">
+                  <span class="card-read-time">3 min read</span>
+                  <button type="button" class="btn-card-action" aria-label="Read full guide on Achieving WCAG Level AAA Color Contrast">
+                    Read Guide &rarr;
+                  </button>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Empty Search State Feedback -->
+            <div id="no-results-message" class="no-results-box" hidden>
+              <p class="no-results-text">No articles found matching your search query.</p>
+              <button type="button" class="btn btn-primary" id="btn-reset-filters">Reset All Filters</button>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- =========================================================== -->
+        <!-- ASIDE SIDEBAR LANDMARK (WCAG 1.3.1 Level A)                 -->
+        <!-- =========================================================== -->
+        <aside class="sidebar-column" role="complementary" aria-label="Sidebar Resources and Newsletter" data-landmark="aside">
+
+          <!-- Accessibility Quick Checklist Card -->
+          <div class="sidebar-card" id="wcag-checklist">
+            <h3 class="sidebar-title">
+              <span aria-hidden="true">📋</span> WCAG AA Compliance Checklist
+            </h3>
+            <ul class="checklist-items">
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>Skip links for keyboard bypass (2.4.1)</span></li>
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>Contrast ratio ≥ 4.5:1 / 7:1 (1.4.3/1.4.6)</span></li>
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>High-visibility focus outlines (2.4.7)</span></li>
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>Accessible form labels & live errors (3.3.1)</span></li>
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>Semantic HTML5 landmarks (1.3.1)</span></li>
+              <li class="checked"><span class="check-mark" aria-hidden="true">✔</span> <span>Motion sensitivity reduction (2.3.3)</span></li>
+            </ul>
+          </div>
+
+          <!-- Accessible Newsletter Subscription Form -->
+          <div class="sidebar-card" id="newsletter-section">
+            <h3 class="sidebar-title">
+              <span aria-hidden="true">📬</span> Accessibility Digest
+            </h3>
+            <p class="sidebar-desc">
+              Receive weekly accessibility auditing tips, WCAG updates, and code snippets.
+            </p>
+
+            <form class="newsletter-form" id="newsletter-form" novalidate>
+              <div class="form-field-group">
+                <label for="subscriber-name" class="field-label">
+                  Your Full Name <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="subscriber-name" 
+                  class="field-input" 
+                  placeholder="e.g. Priyanshu Gupta" 
+                  required
+                  aria-required="true"
+                >
+              </div>
+
+              <div class="form-field-group">
+                <label for="subscriber-email" class="field-label">
+                  Work Email Address <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="subscriber-email" 
+                  class="field-input" 
+                  placeholder="name@organization.com" 
+                  required
+                  aria-required="true"
+                  aria-describedby="email-hint"
+                >
+                <span id="email-hint" class="field-hint">We respect your privacy. No spam ever.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="newsletter-submit-btn">
+                Subscribe to Digest
+              </button>
+
+              <!-- Live Form Status Message Area (WCAG 3.3.1 & 4.1.3) -->
+              <div id="newsletter-status" class="form-status-area" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- 5. FOOTER LANDMARK (WCAG 1.3.1 Level A)                           -->
+  <!-- ================================================================= -->
+  <footer class="site-footer" role="contentinfo" data-landmark="footer">
+    <div class="container footer-inner">
+      <div class="footer-summary">
+        <p class="footer-brand">A11yPortal &bull; Universal Accessibility Initiative</p>
+        <p class="footer-statement">
+          Engineered to conform with WCAG 2.1 & 2.2 Level AA / AAA standards. Tested with screen readers (NVDA, VoiceOver) and full keyboard navigation.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a href="audit-report.md" class="footer-report-link" target="_blank" rel="noopener">
+          View Accessibility Audit Report (Markdown) &rarr;
+        </a>
+        <button type="button" class="back-to-top-btn" id="btn-back-to-top" aria-label="Back to top of page">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          Top
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript Application -->
+  <script src="app.js"></script>
+</body>
+</html>
