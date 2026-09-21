@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ApexStream - Unoptimized Baseline (For Performance Audit)</title>
+  
+  <!-- PERFORMANCE ANTI-PATTERN 1: Missing viewport meta tag causes mobile rendering lag -->
+  
+  <!-- PERFORMANCE ANTI-PATTERN 2: External Google Fonts without preconnect or display=swap -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+  <!-- PERFORMANCE ANTI-PATTERN 3: Synchronous, render-blocking scripts in <head> -->
+  <script>
+    // Artificial heavy CPU parsing delay to simulate unminified bulky vendor bundles
+    const start = Date.now();
+    while (Date.now() - start < 180) { /* Blocking Main Thread */ }
+  </script>
+
+  <!-- PERFORMANCE ANTI-PATTERN 4: Unminified, bloated CSS containing heavy layout selectors -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .banner-warning {
+      background: #dc2626;
+      color: #ffffff;
+      padding: 14px 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .header {
+      background: #161b22;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #30363d;
+    }
+    .nav a {
+      color: #8b949e;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+    .hero {
+      padding: 60px 40px;
+      text-align: center;
+      background: #0d1117;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #8b949e;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+    /* ANTI-PATTERN 5: Hero image without explicit width/height or aspect ratio -> Severe CLS! */
+    .hero-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px;
+      justify-content: center;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      width: 320px;
+      overflow: hidden;
+    }
+    /* ANTI-PATTERN 6: Card images without dimensions -> Layout shifts on load */
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .card-body {
+      padding: 16px;
+    }
+    .card-body h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+    }
+    .card-body p {
+      color: #8b949e;
+      font-size: 14px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-warning">
+    ⚠️ UNOPTIMIZED BASELINE AUDIT PAGE: Contains intentional real-world bottlenecks (Render-blocking JS, missing width/height CLS bugs, lack of lazy-loading, and zero compression) for before-and-after Lighthouse performance comparison.
+  </div>
+
+  <header class="header">
+    <div style="font-weight: 800; font-size: 20px; color: #58a6ff;">ApexStream [Baseline]</div>
+    <nav class="nav">
+      <a href="../index.html" style="color: #3fb950; font-weight: bold;">View Optimized Version &rarr;</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Next-Gen Cloud Streaming Infrastructure</h1>
+    <p>Empowering millions of global creators with ultra-low latency video streaming, real-time edge transcode, and global CDN distribution.</p>
+    
+    <!-- PERFORMANCE ANTI-PATTERN: No width/height, no fetchpriority, no preload -->
+    <img 
+      src="https://picsum.photos/id/1018/1200/600" 
+      alt="Hero visual illustration" 
+      class="hero-img"
+    >
+  </section>
+
+  <h2 style="text-align: center; margin-top: 40px;">Featured Stream Channels</h2>
+
+  <!-- PERFORMANCE ANTI-PATTERN: 8 large below-the-fold images loading eagerly with no lazy-loading -->
+  <div class="grid">
+    <div class="card">
+      <img src="https://picsum.photos/id/1025/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>Live Cloud Architecture 4K</h3>
+        <p>Real-time distributed cluster monitoring and failover broadcast.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1035/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>AI Transcoding Engine</h3>
+        <p>Automated multi-bitrate AV1 and H.265 compression streaming.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1043/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>Edge Compute Mesh</h3>
+        <p>Serverless workers executing in 300+ edge locations worldwide.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1050/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>Zero-Buffer Delivery</h3>
+        <p>WebSockets and WebRTC ultra-low sub-second live streaming.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1062/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>Global Traffic Routing</h3>
+        <p>Intelligent DNS load balancing and dynamic path optimization.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/1069/600/400" alt="Channel thumbnail">
+      <div class="card-body">
+        <h3>Telemetry & Analytics</h3>
+        <p>Sub-second metric pipelines processing over 50M events per second.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Synchronous heavy footer script -->
+  <script>
+    // Simulate non-optimized heavy synchronous scripts
+    for (let i = 0; i < 2000000; i++) {
+      Math.sqrt(i);
+    }
+  </script>
+</body>
+</html>
