@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "total_spend": "$48,920",
+    "total_spend_trend": "+4.2%",
+    "avg_latency": "18.4 ms",
+    "avg_latency_trend": "-8.1%",
+    "uptime": "99.98%",
+    "uptime_trend": "+0.02%",
+    "active_services": 25,
+    "active_services_trend": "+3 new"
+  },
+  "monthly_metrics": [
+    { "month": "Jan", "throughput_mbs": 420, "requests_m": 84, "error_rate": 0.012 },
+    { "month": "Feb", "throughput_mbs": 480, "requests_m": 92, "error_rate": 0.011 },
+    { "month": "Mar", "throughput_mbs": 550, "requests_m": 105, "error_rate": 0.009 },
+    { "month": "Apr", "throughput_mbs": 610, "requests_m": 118, "error_rate": 0.008 },
+    { "month": "May", "throughput_mbs": 690, "requests_m": 134, "error_rate": 0.010 },
+    { "month": "Jun", "throughput_mbs": 740, "requests_m": 148, "error_rate": 0.007 },
+    { "month": "Jul", "throughput_mbs": 810, "requests_m": 162, "error_rate": 0.006 },
+    { "month": "Aug", "throughput_mbs": 890, "requests_m": 179, "error_rate": 0.005 },
+    { "month": "Sep", "throughput_mbs": 960, "requests_m": 194, "error_rate": 0.006 },
+    { "month": "Oct", "throughput_mbs": 1040, "requests_m": 210, "error_rate": 0.004 },
+    { "month": "Nov", "throughput_mbs": 1120, "requests_m": 228, "error_rate": 0.005 },
+    { "month": "Dec", "throughput_mbs": 1250, "requests_m": 252, "error_rate": 0.003 }
+  ],
+  "regional_distribution": [
+    { "region": "US-East (N. Virginia)", "share_percent": 38, "color": "#0284c7" },
+    { "region": "EU-Central (Frankfurt)", "share_percent": 28, "color": "#10b981" },
+    { "region": "AP-Southeast (Singapore)", "share_percent": 20, "color": "#f59e0b" },
+    { "region": "US-West (Oregon)", "share_percent": 14, "color": "#8b5cf6" }
+  ],
+  "services": [
+    { "id": "SVC-101", "name": "auth-gateway-service", "environment": "Production", "status": "Healthy", "latency_ms": 12, "uptime_percent": 99.99, "cpu_usage": 34, "memory_mb": 512, "region": "US-East", "version": "v2.4.1", "last_deployed": "2 hours ago" },
+    { "id": "SVC-102", "name": "billing-payment-engine", "environment": "Production", "status": "Healthy", "latency_ms": 28, "uptime_percent": 99.98, "cpu_usage": 48, "memory_mb": 1024, "region": "US-East", "version": "v3.1.0", "last_deployed": "1 day ago" },
+    { "id": "SVC-103", "name": "edge-video-transcoder", "environment": "Production", "status": "Degraded", "latency_ms": 78, "uptime_percent": 98.40, "cpu_usage": 88, "memory_mb": 4096, "region": "EU-Central", "version": "v1.9.8", "last_deployed": "3 hours ago" },
+    { "id": "SVC-104", "name": "telemetry-metrics-ingest", "environment": "Production", "status": "Healthy", "latency_ms": 8, "uptime_percent": 100.0, "cpu_usage": 62, "memory_mb": 2048, "region": "US-East", "version": "v4.0.2", "last_deployed": "5 days ago" },
+    { "id": "SVC-105", "name": "user-profile-graphql-api", "environment": "Production", "status": "Healthy", "latency_ms": 19, "uptime_percent": 99.95, "cpu_usage": 41, "memory_mb": 768, "region": "EU-Central", "version": "v2.8.0", "last_deployed": "6 hours ago" },
+    { "id": "SVC-106", "name": "search-indexer-worker", "environment": "Staging", "status": "Healthy", "latency_ms": 42, "uptime_percent": 99.50, "cpu_usage": 55, "memory_mb": 1536, "region": "US-West", "version": "v3.0.0-rc2", "last_deployed": "30 mins ago" },
+    { "id": "SVC-107", "name": "notification-dispatcher", "environment": "Production", "status": "Healthy", "latency_ms": 14, "uptime_percent": 99.97, "cpu_usage": 29, "memory_mb": 384, "region": "AP-Southeast", "version": "v1.4.5", "last_deployed": "2 days ago" },
+    { "id": "SVC-108", "name": "recommendation-ml-pod", "environment": "Production", "status": "Degraded", "latency_ms": 94, "uptime_percent": 97.90, "cpu_usage": 91, "memory_mb": 8192, "region": "US-East", "version": "v2.0.1", "last_deployed": "4 hours ago" },
+    { "id": "SVC-109", "name": "cdn-cache-invalidator", "environment": "Production", "status": "Healthy", "latency_ms": 6, "uptime_percent": 99.99, "cpu_usage": 18, "memory_mb": 256, "region": "AP-Southeast", "version": "v1.1.0", "last_deployed": "1 week ago" },
+    { "id": "SVC-110", "name": "data-warehouse-etl-job", "environment": "Development", "status": "Critical", "latency_ms": 240, "uptime_percent": 92.10, "cpu_usage": 98, "memory_mb": 6144, "region": "US-West", "version": "v0.9.4", "last_deployed": "10 mins ago" },
+    { "id": "SVC-111", "name": "identity-oauth-provider", "environment": "Production", "status": "Healthy", "latency_ms": 15, "uptime_percent": 99.99, "cpu_usage": 32, "memory_mb": 512, "region": "EU-Central", "version": "v2.2.0", "last_deployed": "3 days ago" },
+    { "id": "SVC-112", "name": "media-storage-sync", "environment": "Production", "status": "Healthy", "latency_ms": 22, "uptime_percent": 99.92, "cpu_usage": 45, "memory_mb": 1024, "region": "US-East", "version": "v1.8.3", "last_deployed": "12 hours ago" },
+    { "id": "SVC-113", "name": "audit-compliance-logger", "environment": "Production", "status": "Healthy", "latency_ms": 11, "uptime_percent": 100.0, "cpu_usage": 22, "memory_mb": 512, "region": "EU-Central", "version": "v3.0.1", "last_deployed": "4 days ago" },
+    { "id": "SVC-114", "name": "realtime-websocket-hub", "environment": "Production", "status": "Healthy", "latency_ms": 7, "uptime_percent": 99.98, "cpu_usage": 67, "memory_mb": 3072, "region": "US-East", "version": "v2.6.4", "last_deployed": "1 day ago" },
+    { "id": "SVC-115", "name": "invoice-pdf-generator", "environment": "Staging", "status": "Healthy", "latency_ms": 65, "uptime_percent": 99.10, "cpu_usage": 38, "memory_mb": 1024, "region": "US-West", "version": "v1.3.0", "last_deployed": "5 hours ago" },
+    { "id": "SVC-116", "name": "fraud-detection-rules", "environment": "Production", "status": "Healthy", "latency_ms": 24, "uptime_percent": 99.96, "cpu_usage": 52, "memory_mb": 2048, "region": "US-East", "version": "v2.1.2", "last_deployed": "2 days ago" },
+    { "id": "SVC-117", "name": "email-smtp-relay", "environment": "Production", "status": "Healthy", "latency_ms": 31, "uptime_percent": 99.88, "cpu_usage": 25, "memory_mb": 512, "region": "AP-Southeast", "version": "v1.0.8", "last_deployed": "1 week ago" },
+    { "id": "SVC-118", "name": "analytics-aggregation-api", "environment": "Production", "status": "Healthy", "latency_ms": 18, "uptime_percent": 99.94, "cpu_usage": 58, "memory_mb": 2048, "region": "EU-Central", "version": "v3.2.0", "last_deployed": "18 hours ago" },
+    { "id": "SVC-119", "name": "redis-cluster-cache", "environment": "Production", "status": "Healthy", "latency_ms": 3, "uptime_percent": 100.0, "cpu_usage": 42, "memory_mb": 8192, "region": "US-East", "version": "v7.2.1", "last_deployed": "2 weeks ago" },
+    { "id": "SVC-120", "name": "kubernetes-auto-scaler", "environment": "Production", "status": "Healthy", "latency_ms": 16, "uptime_percent": 99.99, "cpu_usage": 28, "memory_mb": 512, "region": "US-West", "version": "v1.5.0", "last_deployed": "3 days ago" },
+    { "id": "SVC-121", "name": "webhook-event-receiver", "environment": "Staging", "status": "Degraded", "latency_ms": 86, "uptime_percent": 98.10, "cpu_usage": 79, "memory_mb": 1024, "region": "US-East", "version": "v2.0.0-beta", "last_deployed": "1 hour ago" },
+    { "id": "SVC-122", "name": "secrets-vault-manager", "environment": "Production", "status": "Healthy", "latency_ms": 9, "uptime_percent": 100.0, "cpu_usage": 19, "memory_mb": 512, "region": "EU-Central", "version": "v4.1.0", "last_deployed": "6 days ago" },
+    { "id": "SVC-123", "name": "content-localization-svc", "environment": "Development", "status": "Healthy", "latency_ms": 35, "uptime_percent": 99.20, "cpu_usage": 31, "memory_mb": 768, "region": "AP-Southeast", "version": "v0.8.2", "last_deployed": "2 hours ago" },
+    { "id": "SVC-124", "name": "asset-thumbnail-resizer", "environment": "Production", "status": "Healthy", "latency_ms": 44, "uptime_percent": 99.85, "cpu_usage": 64, "memory_mb": 2048, "region": "US-West", "version": "v2.3.1", "last_deployed": "4 days ago" },
+    { "id": "SVC-125", "name": "customer-support-ticket-bot", "environment": "Development", "status": "Critical", "latency_ms": 310, "uptime_percent": 89.40, "cpu_usage": 96, "memory_mb": 1536, "region": "US-East", "version": "v0.5.0", "last_deployed": "15 mins ago" }
+  ],
+  "activity_logs": [
+    { "timestamp": "13:14:22", "level": "INFO", "service": "auth-gateway-service", "message": "SSL certificate renewal verified successfully." },
+    { "timestamp": "13:12:05", "level": "WARN", "service": "edge-video-transcoder", "message": "CPU utilization exceeded 85% threshold on node pod-04." },
+    { "timestamp": "13:08:41", "level": "ERROR", "service": "data-warehouse-etl-job", "message": "Connection timeout to replica database cluster." },
+    { "timestamp": "13:05:19", "level": "INFO", "service": "telemetry-metrics-ingest", "message": "High-cardinality indexing completed for 12.4M metric events." },
+    { "timestamp": "12:58:33", "level": "WARN", "service": "recommendation-ml-pod", "message": "Memory utilization reached 91%; trigger auto-scaling horizontal pod." },
+    { "timestamp": "12:51:10", "level": "INFO", "service": "redis-cluster-cache", "message": "Cache eviction policy executed; hit ratio stabilized at 98.4%." }
+  ]
+}

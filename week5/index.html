@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OmniMetrics is an enterprise cloud analytics and telemetry dashboard integrating dynamic data visualization, WCAG 2.1/2.2 AA/AAA accessibility, responsive CSS Grid/Flexbox design, and high-performance offline capabilities.">
+  <meta name="theme-color" content="#0369a1">
+  <title>OmniMetrics | Cloud Telemetry & Microservices Analytics Dashboard</title>
+
+  <!-- Preconnect to fonts and load minified production stylesheet -->
+  <link rel="stylesheet" href="styles.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230284c7'><path d='M3 3v18h18V3H3zm16 16H5V5h14v14zM11 7h2v10h-2V7zm-4 4h2v6H7v-6zm8-2h2v8h-2V9z'/></svg>">
+</head>
+<body>
+
+  <!-- WCAG Accessible Skip Link for Keyboard Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <!-- Screen Reader Live Region Announcer -->
+  <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Application Shell Header -->
+  <header class="app-header" role="banner">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">OmniMetrics</h1>
+          <span class="brand-tagline">Cloud Telemetry & Fleet Analytics</span>
+        </div>
+      </div>
+
+      <div class="header-status-badge">
+        <span class="pulse-indicator" aria-hidden="true"></span>
+        <span class="status-label">Cluster Status: <strong>Nominal</strong> (99.98% SLA)</span>
+      </div>
+
+      <!-- Accessibility & Application Controls Toolbar -->
+      <div class="toolbar-group" role="toolbar" aria-label="Dashboard controls and accessibility settings">
+        <!-- Font Scaling Controls -->
+        <div class="font-scale-group" role="group" aria-label="Text size adjustments">
+          <button type="button" class="btn-tool active" data-font-scale="1" aria-label="Standard 100% text size">A</button>
+          <button type="button" class="btn-tool" data-font-scale="1.15" aria-label="Medium 115% text size">A+</button>
+          <button type="button" class="btn-tool" data-font-scale="1.30" aria-label="Large 130% text size">A++</button>
+        </div>
+
+        <!-- High-Contrast WCAG AAA Toggle -->
+        <button type="button" class="btn-tool" id="contrast-toggle" aria-label="Toggle high contrast color mode (WCAG AAA)" title="High Contrast Mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"></path>
+          </svg>
+          <span class="tool-text">Contrast</span>
+        </button>
+
+        <!-- Real-Time Telemetry Refresh Simulation -->
+        <button type="button" class="btn-tool btn-tool-primary" id="refresh-telemetry-btn" aria-label="Refresh telemetry data">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+          <span class="tool-text">Refresh</span>
+        </button>
+
+        <!-- Blueprint / Wireframe Navigation -->
+        <a href="wireframe.html" class="btn-tool btn-tool-link" aria-label="View architectural wireframe specification">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          <span class="tool-text">Wireframe</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Container -->
+  <main id="main-content" class="app-main" role="main">
+    
+    <!-- Section 1: KPI Metric Highlights -->
+    <section class="kpi-grid" aria-label="Cluster Key Performance Indicators">
+      <div class="kpi-card" tabindex="0">
+        <div class="kpi-header">
+          <span class="kpi-title">Monthly Cloud Spend</span>
+          <span class="kpi-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-spend">$48,920</span>
+          <span class="kpi-trend trend-neutral" id="kpi-spend-trend">+4.2%</span>
+        </div>
+        <span class="kpi-meta text-muted">Across AWS, GCP &amp; Azure deployments</span>
+      </div>
+
+      <div class="kpi-card" tabindex="0">
+        <div class="kpi-header">
+          <span class="kpi-title">Average Fleet Latency</span>
+          <span class="kpi-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-latency">18.4 ms</span>
+          <span class="kpi-trend trend-positive" id="kpi-latency-trend">-8.1%</span>
+        </div>
+        <span class="kpi-meta text-muted">p95 response time (rolling 24h)</span>
+      </div>
+
+      <div class="kpi-card" tabindex="0">
+        <div class="kpi-header">
+          <span class="kpi-title">Global Availability</span>
+          <span class="kpi-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-uptime">99.98%</span>
+          <span class="kpi-trend trend-positive" id="kpi-uptime-trend">+0.02%</span>
+        </div>
+        <span class="kpi-meta text-muted">Commitment: 99.95% Enterprise SLA</span>
+      </div>
+
+      <div class="kpi-card" tabindex="0">
+        <div class="kpi-header">
+          <span class="kpi-title">Active Microservices</span>
+          <span class="kpi-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-services">25</span>
+          <span class="kpi-trend trend-positive" id="kpi-services-trend">+3 new</span>
+        </div>
+        <span class="kpi-meta text-muted">22 healthy, 2 degraded, 1 critical</span>
+      </div>
+    </section>
+
+    <!-- Section 2: Data Visualizations (Bar & Doughnut Charts) -->
+    <section class="analytics-grid" aria-label="Visual Telemetry and Regional Analysis">
+      
+      <!-- Chart Card 1: 12-Month Telemetry Trends Bar Chart -->
+      <article class="chart-card" aria-labelledby="bar-chart-heading">
+        <div class="chart-controls-bar">
+          <div class="metric-switch-group" role="tablist" aria-label="Select metric for throughput trends">
+            <button type="button" class="btn-metric active" role="tab" aria-selected="true" data-chart-metric="requests_m">
+              Requests (M)
+            </button>
+            <button type="button" class="btn-metric" role="tab" aria-selected="false" data-chart-metric="throughput_mbs">
+              Throughput (MB/s)
+            </button>
+            <button type="button" class="btn-metric" role="tab" aria-selected="false" data-chart-metric="error_rate">
+              Error Rate (%)
+            </button>
+          </div>
+        </div>
+        <div id="bar-chart-container" class="chart-content">
+          <!-- Dynamically generated SVG Bar Chart -->
+        </div>
+      </article>
+
+      <!-- Chart Card 2: Regional Traffic Distribution Doughnut Chart -->
+      <article class="chart-card" aria-labelledby="doughnut-chart-heading">
+        <div id="doughnut-chart-container" class="chart-content">
+          <!-- Dynamically generated SVG Doughnut Chart -->
+        </div>
+      </article>
+    </section>
+
+    <!-- Section 3: Microservices Registry Table -->
+    <section class="services-section" aria-label="Microservice Fleet Registry">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Microservice Fleet Registry</h2>
+          <p class="section-subtitle">Real-time health, latency metrics, and deployment status across all operational environments.</p>
+        </div>
+        <div class="section-actions">
+          <button type="button" class="btn btn-secondary" id="export-csv-btn" aria-label="Export current filtered microservices to CSV file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter & Search Controls -->
+      <div class="table-controls-bar" role="search" aria-label="Filter and search microservices">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <label for="table-search" class="sr-only">Search microservices by name, ID, or region</label>
+          <input type="search" id="table-search" class="form-input" placeholder="Search by name, ID, region..." autocomplete="off">
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-item">
+            <label for="status-filter" class="filter-label">Status:</label>
+            <select id="status-filter" class="form-select">
+              <option value="ALL">All Statuses</option>
+              <option value="HEALTHY">Healthy</option>
+              <option value="DEGRADED">Degraded</option>
+              <option value="CRITICAL">Critical</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="env-filter" class="filter-label">Environment:</label>
+            <select id="env-filter" class="form-select">
+              <option value="ALL">All Environments</option>
+              <option value="PRODUCTION">Production</option>
+              <option value="STAGING">Staging</option>
+              <option value="DEVELOPMENT">Development</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accessible Responsive Table -->
+      <div class="table-responsive" tabindex="0" role="region" aria-label="Microservice Telemetry Table scrollable container">
+        <table class="services-table" aria-label="Microservice Fleet Telemetry Data">
+          <thead>
+            <tr>
+              <th scope="col" data-sort="id" tabindex="0" role="columnheader" aria-sort="none" title="Click or press enter to sort by ID">
+                <div class="th-content">
+                  <span>ID</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" data-sort="name" tabindex="0" role="columnheader" aria-sort="ascending" title="Click or press enter to sort by Service Name">
+                <div class="th-content">
+                  <span>Service Name</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" data-sort="environment" tabindex="0" role="columnheader" aria-sort="none" title="Click or press enter to sort by Environment">
+                <div class="th-content">
+                  <span>Environment</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" data-sort="status" tabindex="0" role="columnheader" aria-sort="none" title="Click or press enter to sort by Status">
+                <div class="th-content">
+                  <span>Status</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" data-sort="latency_ms" tabindex="0" role="columnheader" aria-sort="none" title="Click or press enter to sort by Latency">
+                <div class="th-content">
+                  <span>Latency</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" data-sort="uptime_percent" tabindex="0" role="columnheader" aria-sort="none" title="Click or press enter to sort by SLA Uptime">
+                <div class="th-content">
+                  <span>SLA Uptime</span>
+                  <span class="sort-indicator" aria-hidden="true"></span>
+                </div>
+              </th>
+              <th scope="col" class="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="services-table-body">
+            <!-- Dynamic microservices rows populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Navigation -->
+      <nav class="pagination-bar" aria-label="Microservices table pagination">
+        <div id="pagination-summary" class="pagination-summary text-muted">
+          Showing 1–6 of 25 microservices
+        </div>
+        <div id="pagination-container" class="pagination-controls">
+          <!-- Dynamic page buttons -->
+        </div>
+      </nav>
+    </section>
+
+    <!-- Section 4: Cluster Activity & Incident Logs -->
+    <section class="activity-section" aria-label="Cluster Audit and Incident Feed">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Cluster Event Stream</h2>
+          <p class="section-subtitle">Real-time audit log of system events, autoscaling triggers, and security alerts.</p>
+        </div>
+      </div>
+      <div class="activity-container">
+        <ul id="activity-logs-list" class="activity-logs-list" role="feed" aria-busy="false" aria-label="Recent system activity log items">
+          <!-- Dynamic system logs populated by app.js -->
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Application Footer -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="footer-container">
+      <p class="footer-text">
+        &copy; 2026 OmniMetrics Inc. Built with Vanilla HTML5, CSS3 Grid/Flexbox, and ES6+ JavaScript.
+      </p>
+      <div class="footer-links">
+        <span class="footer-badge">WCAG 2.1 AA/AAA Compliant</span>
+        <span class="footer-badge">Zero Framework Dependencies</span>
+        <a href="wireframe.html" class="footer-link">Wireframe Blueprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessible Service Detail Modal Dialog -->
+  <div id="service-modal-overlay" class="modal-overlay" aria-hidden="true" role="presentation">
+    <div id="service-modal" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <svg class="modal-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+          <h3 id="modal-title" class="modal-title">Service Details</h3>
+        </div>
+        <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Close service details dialog">
+          &times;
+        </button>
+      </div>
+
+      <div id="modal-body" class="modal-body">
+        <!-- Dynamically injected telemetry details -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Core JavaScript Application Bundle -->
+  <script src="app.min.js"></script>
+</body>
+</html>

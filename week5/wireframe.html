@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OmniMetrics Cloud Dashboard - Architectural Wireframe & Component Layout Specification">
+  <title>OmniMetrics | Architectural Wireframe & Component Layout</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --primary: #38bdf8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --wireframe-box: rgba(56, 189, 248, 0.08);
+      --wireframe-border: #0284c7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    h1 { font-size: 1.75rem; color: var(--primary); }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      background: #0369a1;
+      color: #fff;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: #0284c7;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #0369a1; }
+    .section-title {
+      font-size: 1.3rem;
+      margin: 2rem 0 1rem;
+      color: #e2e8f0;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.75rem;
+    }
+    .wireframe-canvas {
+      background: #111827;
+      border: 2px dashed var(--wireframe-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .wireframe-block {
+      border: 1px dashed #64748b;
+      background: var(--wireframe-box);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .wireframe-block strong {
+      display: block;
+      color: var(--primary);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .wireframe-block span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .grid-4 { grid-template-columns: 1fr; }
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .spec-table th, .spec-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .spec-table th {
+      background: #0f172a;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .code-tag {
+      font-family: monospace;
+      background: #0f172a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>OmniMetrics Architecture Blueprint</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Wireframe Layout, Component Hierarchy &amp; WCAG 2.1 AA/AAA Specifications</p>
+      </div>
+      <div>
+        <a href="index.html" class="nav-btn">Launch Live Dashboard &rarr;</a>
+      </div>
+    </header>
+
+    <h2 class="section-title">1. Dashboard Visual Blueprint (Desktop &gt;1024px)</h2>
+    <div class="wireframe-canvas">
+      <!-- Header Wireframe Block -->
+      <div class="wireframe-block" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1.25rem;">
+        <div style="text-align: left;">
+          <strong>[A] Application Shell Header</strong>
+          <span>Logo, Title, Cluster Health Pill</span>
+        </div>
+        <div style="text-align: right;">
+          <strong>Accessibility Toolbar</strong>
+          <span>Font Scaler (A / A+ / A++), AAA Contrast Toggle, Telemetry Refresh</span>
+        </div>
+      </div>
+
+      <!-- KPI Wireframe Block -->
+      <div class="grid-4" style="margin-bottom: 1rem;">
+        <div class="wireframe-block">
+          <strong>[B1] Monthly Spend</strong>
+          <span>$48,920 (+4.2%)</span>
+        </div>
+        <div class="wireframe-block">
+          <strong>[B2] Fleet Latency</strong>
+          <span>18.4 ms (-8.1%)</span>
+        </div>
+        <div class="wireframe-block">
+          <strong>[B3] Global Uptime</strong>
+          <span>99.98% (+0.02%)</span>
+        </div>
+        <div class="wireframe-block">
+          <strong>[B4] Active Fleet</strong>
+          <span>25 Services (+3 new)</span>
+        </div>
+      </div>
+
+      <!-- Analytics Wireframe Block -->
+      <div class="grid-2" style="margin-bottom: 1rem;">
+        <div class="wireframe-block" style="min-height: 180px; display: flex; flex-direction: column; justify-content: center;">
+          <strong>[C1] Interactive Telemetry Trends (SVG Bar Chart)</strong>
+          <span>12-Month Historical Telemetry | Metric Switcher Tabs (Requests / Throughput / Errors) | Hover Tooltips</span>
+        </div>
+        <div class="wireframe-block" style="min-height: 180px; display: flex; flex-direction: column; justify-content: center;">
+          <strong>[C2] Regional Distribution (SVG Doughnut Chart)</strong>
+          <span>Multi-Cloud Regional Spread | US-East (38%), EU-Central (28%), AP-Southeast (20%), US-West (14%)</span>
+        </div>
+      </div>
+
+      <!-- Table Wireframe Block -->
+      <div class="wireframe-block" style="text-align: left; padding: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <strong>[D] Microservice Fleet Registry Table</strong>
+            <span>Search Query Input | Status Filter (All/Healthy/Degraded/Critical) | Environment Filter</span>
+          </div>
+          <div>
+            <span class="code-tag">Export CSV</span>
+          </div>
+        </div>
+        <div style="border: 1px solid var(--border); padding: 0.75rem; border-radius: 4px; background: rgba(0,0,0,0.2);">
+          <span>Columns: ID | Service Name | Environment | Status Badge | Latency (ms) | SLA Uptime (%) | Action [Inspect]</span>
+        </div>
+        <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
+          <span>Showing 1–6 of 25 microservices</span>
+          <span>Pagination: [ &laquo; Prev ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ Next &raquo; ]</span>
+        </div>
+      </div>
+
+      <!-- Logs Wireframe Block -->
+      <div class="wireframe-block" style="text-align: left; margin-bottom: 0;">
+        <strong>[E] Cluster Event &amp; Audit Stream</strong>
+        <span>Timestamped operational logs with severity badges (INFO, WARN, ERROR) and auto-scaling telemetry records</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">2. Responsive Breakpoint Layout Adaptations</h2>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Breakpoint</th>
+          <th>Layout Structure</th>
+          <th>Adaptation Strategy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Desktop (&gt;1024px)</strong></td>
+          <td>4-Column KPI, 2-Column Analytics (70%/30%), Full Table</td>
+          <td>Maximum information density with comprehensive multi-column charts and interactive telemetry controls.</td>
+        </tr>
+        <tr>
+          <td><strong>Tablet (768px – 1023px)</strong></td>
+          <td>2x2 KPI Grid, Stacked Analytics Cards, Responsive Scroll Table</td>
+          <td>CSS Grid transitions to 2 columns for KPIs; chart cards stack vertically to preserve SVG aspect ratios.</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile (&lt;768px)</strong></td>
+          <td>Single Column Flow, Stacked Filters, Touch-Optimized Inspect Actions</td>
+          <td>Toolbar wraps cleanly; font scaler remains reachable; table provides horizontal scroll container with touch momentum.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">3. Accessibility (WCAG 2.1/2.2 AA &amp; AAA) Compliance Architecture</h2>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Requirement</th>
+          <th>Implementation</th>
+          <th>Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Color Contrast</strong></td>
+          <td>Default theme achieves &gt;4.8:1 contrast. High-Contrast mode delivers &gt;7:1 (WCAG AAA).</td>
+          <td>Verified with WebAIM and Chrome DevTools color audit tools.</td>
+        </tr>
+        <tr>
+          <td><strong>Keyboard Navigation</strong></td>
+          <td>Full tab order across skip link, toolbar, metric switchers, chart elements, table headers, and pagination.</td>
+          <td>Zero keyboard traps. Focus ring styling with high-visibility 2px outline and 2px offset.</td>
+        </tr>
+        <tr>
+          <td><strong>Screen Reader Support</strong></td>
+          <td>Live region <span class="code-tag">&lt;div aria-live="polite"&gt;</span> announces sort changes, filter results, and pagination.</td>
+          <td>Semantic ARIA roles (<span class="code-tag">dialog</span>, <span class="code-tag">tablist</span>, <span class="code-tag">graphics-symbol</span>).</td>
+        </tr>
+        <tr>
+          <td><strong>Modal Dialog Trap</strong></td>
+          <td>Accessible focus trapping cycling from close button through all interactive elements. Esc key dismisses.</td>
+          <td>Restores focus back to triggering Inspect button upon dismissal.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 2rem; text-align: center;">
+      <a href="index.html" class="nav-btn">Open Live OmniMetrics Dashboard &rarr;</a>
+    </div>
+  </div>
+</body>
+</html>
